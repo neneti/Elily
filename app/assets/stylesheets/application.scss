@@ -1,2 +1,14 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.bg-img {
+  background: url(top.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.bg-brack {
+    background-color: rgba(0,0,0,0.7);
+    height: 500px;
+}
