@@ -1,6 +1,11 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+body {
+  font-family: serif;
+  padding-top: 66px;
+}
+
 .bg-img {
   background: url(top.jpg);
   background-size: cover;
