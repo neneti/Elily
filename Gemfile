@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'sprockets-rails', '3.2.1'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'bcrypt',         '3.1.13'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
