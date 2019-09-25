@@ -1,6 +1,7 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+
 body {
   font-family: serif;
   padding-top: 66px;
@@ -21,4 +22,16 @@ body {
 .container_pop {
   background-color: rgb(113, 116, 112)
 }
- 
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+#error_explanation {
+  color: red;
+}
