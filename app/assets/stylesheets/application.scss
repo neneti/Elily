@@ -2,11 +2,6 @@
 @import "bootstrap";
 
 
-body {
-  font-family: serif;
-  padding-top: 66px;
-}
-
 .bg-img {
   background: url(top.jpg);
   background-size: cover;
@@ -17,6 +12,11 @@ body {
 .bg-brack {
   background-color: rgba(0,0,0,0.7);
   height: 500px;
+}
+
+body {
+  font-family: serif;
+  padding-top: 50px;
 }
 
 .container_pop {

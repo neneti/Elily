@@ -8,7 +8,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render 'layouts/header'
+    = render 'layouts/header' if logged_in?
     - flash.each do |message_type, message|
       div class="alert alert-#{message_type} text-center mb-0 rounded-0"
         = message
