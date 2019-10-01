@@ -1,13 +1,27 @@
 header
-  nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.fixed-top
-    = link_to image_tag("aoba.jpg", width: 40, height: 50, class: "navbar-brand rounded-circle"), "#"
-    button.navbar-toggler data-toggle="collapse" data-target="#menu"
-      span.navbar-toggler-icon
-    div#menu.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item = link_to "作品投稿", '#', class: "nav-link"
-        li.nav-item = link_to "ランキング", '#', class: "nav-link"
-        li.nav-item = link_to "ポイント", '#', class: "nav-link"
-        .dropdown
-          button.btn.btn-secondary.dropdown-toggle type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            
+  nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+    .container
+      = link_to 'OEkaking', root_path, class: "navbar-brand"
+      button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbar-menu'
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbar-menu
+        ul.navbar-nav.ml-auto
+          - if logged_in?
+            li.nav-item
+              = link_to 'ユーザーを探す', users_path, class: 'nav-link'
+            li.nav-item
+              = link_to '記事を探す', users_path, class: 'nav-link'
+            li.nav-item
+              = link_to '投稿する', users_path, class: 'nav-link'
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle#navbarDropdown role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
+                  = image_tag '/assets/user_dummy.jpg', size: "25x25", class: 'rounded-circle'
+                .dropdown-menu aria-labelledby='navbarDropdown'
+                  = link_to 'マイページ', root_path, class: 'dropdown-item'
+                  = link_to '設定', root_path, class: 'dropdown-item'
+                  = link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item'
+          - else
+            li.nav-item
+              = link_to '新規登録', signup_path, class: 'nav-link'
+              li.nav-item
+              = link_to 'ログイン', login_path, class: 'nav-link'

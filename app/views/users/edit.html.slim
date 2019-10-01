@@ -1,0 +1,24 @@
+- provide(:title, '設定')
+.bg-mask.py-5
+  .container style="width:500px"
+    h1.text-center.mb-3 アカウント管理
+
+    = form_with model: @user, local: true do |f|
+        = render 'shared/error_messages', object: f.object
+
+        .form-group
+          = f.label :name, '名前'
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :email, 'メールアドレス'
+          = f.text_field :email, class: 'form-control'
+        .form-group
+          = f.label :password, 'パスワード'
+          = f.password_field :password, class: 'form-control'
+        .form-group
+          = f.label :password_confirmation, 'パスワード（確認）'
+          = f.password_field :password_confirmation, class: 'form-control'
+        .form-group.text-center
+          = f.submit '更新', class: 'btn btn-info btn-block'
+        .text-center
+          = link_to '削除', @user, method: :delete, data: { confirm: "アカウントを削除します。よろしいですか？"}, class: 'btn btn-danger btn-block'

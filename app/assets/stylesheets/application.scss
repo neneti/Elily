@@ -1,6 +1,9 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+body {
+  padding-top: 50px;
+}
 
 .bg-img {
   background: url(top.jpg);
@@ -14,10 +17,6 @@
   height: 500px;
 }
 
-body {
-  font-family: serif;
-  padding-top: 50px;
-}
 
 .container_pop {
   background-color: rgb(113, 116, 112)
