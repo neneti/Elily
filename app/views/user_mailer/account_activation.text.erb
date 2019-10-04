@@ -1,0 +1,8 @@
+<%= "こんにちは、#{@user.name}さん。" %>
+
+oekakingにご登録いただいたメールアドレスを確認します。
+下記へアクセスし、登録を完了してください。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+発行元：oekaking

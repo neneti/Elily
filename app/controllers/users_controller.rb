@@ -19,11 +19,11 @@ before_action :admin_user,     only: :destroy
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
+      @user.send_activation_email
       flash[:info] = '登録を完了するには、メールを確認してください。'
-      redirect_to @user
+      redirect_to root_url
     else
-      render 'new'
+      render :new
     end
   end
 
