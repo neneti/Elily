@@ -17,7 +17,7 @@ header
                 a.nav-link.dropdown-toggle#navbarDropdown role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
                   = image_tag '/assets/user_dummy.jpg', size: "25x25", class: 'rounded-circle'
                 .dropdown-menu aria-labelledby='navbarDropdown'
-                  = link_to 'マイページ', root_path, class: 'dropdown-item'
+                  = link_to 'マイページ', current_user, class: 'dropdown-item'
                   = link_to '設定', edit_user_path(current_user), class: 'dropdown-item'
                   = link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item'
           - else
