@@ -1,0 +1,7 @@
+- @user ||= current_user
+  .container
+    h3.my-4.pt-3
+      = link_to @user.following.count,followers_user_path(@user)
+    h5
+      = @user.followers.count
+        | フォロワー

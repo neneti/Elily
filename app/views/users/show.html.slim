@@ -5,10 +5,12 @@
     h1
       = gravatar_for @user
       = @user.name
-col-md-8
-  - if @user.microposts.any?
-    h3
-      Microposts = @user.microposts.count
+      = render 'shared/stats'
+  .col-md-8
+    = render 'follow_form' if logged_in?
+    - if @user.microposts.any?
+      h3
+        Microposts = @user.microposts.count
     ol
-      = render @microposts
-      = paginate @microposts
+     = render @microposts
+     = paginate @microposts
