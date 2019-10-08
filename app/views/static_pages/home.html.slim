@@ -2,15 +2,13 @@
   .container.py-5
   .row
     .col-md-4
-      = render 'shared/stats' 
+      = render 'shared/stats'
       = render 'shared/user_info'
       = render 'shared/micropost_form'
     .col-md-8
       h3 フィード
       = render 'shared/feed'
-
 - else
-
   .bg-img.text-center
     .bg-brack
       .container
@@ -26,6 +24,6 @@
               = link_to 'ツイッターログイン', "#", class: "btn btn-light btn-main btn-main"
   .container_pop
     .container
-      h5.py-3.text-light.ml-4 人気ユーザーランキング
+      h5.py-3.text-light 人気ユーザーランキング
   .container.border.border-success.
     h5.py-3.ml-4 新着投稿

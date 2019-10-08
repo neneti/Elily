@@ -1,7 +1,21 @@
 - provide(:title, @user.name)
-.row
-  .col-md-4
-    section
+.container.my-5
+  .row#user-info
+    .col-md-5.text-right
+      - if @user.avatar.attached?
+        = image_tag @user.avatar, class: 'rounded-circle'
+      - else
+        = image_tag  '/assets/user_dummy.jpg', class: 'rounded-circle'
+        br
+        = render 'follow_form' if logged_in?
+    .col-md-7.pt-3
+      .container.w-75
+        h3.border-bottom  = @user.name + 'さん'
+        p.container.text-wrap.my-3
+          = simple_format(@user.profile)
+
+
+/    section
     h1
       = gravatar_for @user
       = @user.name

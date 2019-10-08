@@ -22,7 +22,7 @@ before_action :admin_user,     only: :destroy
     if @user.save
       @user.send_activation_email
       flash[:info] = '登録を完了するには、メールを確認してください。'
-      redirect_to root_url
+      redirect_to @user
     else
       render :new
     end
@@ -66,7 +66,8 @@ before_action :admin_user,     only: :destroy
     private
 
   def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :profile,
+                                   :avatar, :password,
                                    :password_confirmation)
   end
 
