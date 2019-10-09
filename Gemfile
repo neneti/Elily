@@ -14,7 +14,8 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick'
-gem 'fog'
+gem 'fog-aws'
+gem "simple_calendar", "~> 2.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
