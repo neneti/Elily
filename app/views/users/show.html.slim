@@ -14,6 +14,21 @@
         p.container.text-wrap.my-3
           = simple_format(@user.profile)
 
+- @microposts.each do |micropost|
+  tr
+    td = micropost.title
+    td = micropost.start_time.strftime("%Y-%m-%d %H:%M")
+
+= month_calendar events: @microposts do |date, microposts|
+  = date.day
+
+  - microposts.each do |micropost|
+    = link_to micropost.title, micropost
+
+
+
+
+
 
 /    section
     h1

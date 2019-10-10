@@ -1,0 +1,20 @@
+- provide(:title, '登録')
+.container.py-5.px-md-5 style="width:450px"
+  h1.text-center.mb-5 イラスト投稿
+
+  .container.w-100.w-sm-25
+    = form_with model: @micropost, local: true do |f|
+      = render "shared/error_messages",object: f.object
+      .form-group
+        = f.label :title, "タイトル"
+        = f.text_field :title, class: "form-control"
+      .form-group
+        = f.label :content, "詳細"
+        = f.text_field :content, class: "form-control"
+      .form-group
+        = f.label :start_time, "日程"
+        = f.datetime_select :start_time, class: "form-control"
+      .form-group
+        = f.file_field :illusts,multiple: true, class: "form-control"
+      .form-group.text-center
+        = f.submit "登録", class: "btn btn-info w-100"
