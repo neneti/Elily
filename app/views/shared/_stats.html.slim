@@ -1,7 +1,12 @@
 - @user ||= current_user
-  .container
-    h3.my-4.pt-3
-      = link_to @user.following.count,followers_user_path(@user)
-    h5
+.stats
+  = link_to following_user_path(@user)
+    strong#following.stat
+      = @user.following.count
+      br
+      |フォロー
+  = link_to followers_user_path(@user)
+    strong#followers.stat
       = @user.followers.count
-        | フォロワー
+      br
+      |  フォロワー

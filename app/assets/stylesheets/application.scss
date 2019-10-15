@@ -20,7 +20,6 @@ body {
   height: 500px;
 }
 
-
 .container_pop {
   background-color: rgb(113, 116, 112)
 }
@@ -34,6 +33,52 @@ body {
   margin-top: 15px;
 }
 
+.follow-btn {
+  width: 100px;
+  background-color: #fff;
+  color: #74f0fc;
+  border: 2px solid #3c4fb3;
+  &:hover {
+    background-color: #bdfff9;
+    color: #74f0fc;
+    border: 2px solid #3c4fb3;
+  }
+}
+.unfollow-btn {
+  width: 100px;
+  background-color: #1dd3f4;
+  color: #fff;
+  border: 2px solid #1dd3f4;
+  &:hover {
+    border-color: #2ac3d2;
+    color: #fff;
+  }
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 10px;
+  padding: 0;
+  display: flex;
+   justify-content: center;
+  a {
+    padding: 0 20px;
+    border-left: 1px solid rgb(167, 150, 118);
+    color: gray;
+    &:first-child {
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+
 #error_explanation {
   color: red;
 }
@@ -41,7 +86,7 @@ body {
 #user-info {
   img{
     background-size: auto;
-    width: 200px;
-    height: 200px;
+    width: 80px;
+    height: 80px;
   }
 }

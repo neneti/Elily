@@ -1,29 +1,25 @@
 - provide(:title, @user.name)
 .container.my-5
-  .row#user-info
-    .col-md-5.text-right
+  .row
+    .col-md-4.text-center.pt-3
       - if @user.avatar.attached?
-        = image_tag @user.avatar, class: 'rounded-circle'
+        = image_tag @user.avatar, size: '120x120', class: 'rounded-circle'
       - else
-        = image_tag  '/assets/user_dummy.jpg', class: 'rounded-circle'
+        = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
         br
-        = render 'follow_form' if logged_in?
-    .col-md-7.pt-3
+        = render 'shared/stats'
+    .col-md-8.pt-3
       .container.w-75
-        h3.border-bottom  = @user.name + 'さん'
+        h3.border-bottom  = @user.name
         p.container.text-wrap.my-3
           = simple_format(@user.profile)
 
-- @microposts.each do |micropost|
-  tr
-    td = micropost.title
-    td = micropost.start_time.strftime("%Y-%m-%d %H:%M")
+  .container.pt-3
+    = month_calendar events: @microposts do |date, microposts|
+      = date.day
 
-= month_calendar events: @microposts do |date, microposts|
-  = date.day
-
-  - microposts.each do |micropost|
-    = link_to micropost.title, micropost
+      - microposts.each do |micropost|
+        = link_to micropost.title, micropost
 
 
 

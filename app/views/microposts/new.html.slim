@@ -10,11 +10,11 @@
         = f.text_field :title, class: "form-control"
       .form-group
         = f.label :content, "詳細"
-        = f.text_field :content, class: "form-control"
+        = f.text_area :content,rows:5, class: "form-control"
       .form-group
-        = f.label :start_time, "日程"
-        = f.datetime_select :start_time, class: "form-control"
+        = f.label :start_time, "時間"
+        = f.date_select :start_time, class: "form-control"
       .form-group
-        = f.file_field :illusts,multiple: true, class: "form-control"
+        = f.file_field :illusts, multiple: true, class: "form-control"
       .form-group.text-center
         = f.submit "登録", class: "btn btn-info w-100"

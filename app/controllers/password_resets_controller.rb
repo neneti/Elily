@@ -45,7 +45,6 @@ private
     @user = User.find_by(email: params[:email])
   end
 
-      # 正しいユーザーかどうか確認する
   def valid_user
     redirect_to root_url unless @user&.activated? && @user&.authenticated?(:reset, params[:id])
   end

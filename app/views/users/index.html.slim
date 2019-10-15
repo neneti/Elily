@@ -1,5 +1,8 @@
-- provide(:title, 'All users')
-.container.py-5
-  = render @users
-    .my-3.ml-3
+.container.pt-5
+  .row.text-center
+    .col-md-2
+  = render partial: 'user'
+  .row.mt-5
+    .mx-auto
       = paginate @users
+ 

@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-md-3
+      = render "shared/user_info"
+      = render "shared/stats"
+    .col-md-9
+      .container
+        - @micropost.illusts.each do |illust|
+          = image_tag illust.variant(resize:'800x800').processed, class: 'py-5'
+        h3.mt-3.mb-2
+          = @micropost.title
+        p.mb-2
+          = @micropost.content

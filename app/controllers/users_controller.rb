@@ -35,7 +35,7 @@ before_action :admin_user,     only: :destroy
   def update
    @user = User.find(params[:id])
    if @user.update_attributes(user_params)
-     flash[:success] = "変更が完了しました"
+     flash[:success] = "プロフィールを更新しました。"
      redirect_to @user
    else
      render 'edit'
@@ -44,24 +44,23 @@ before_action :admin_user,     only: :destroy
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "アカウントを削除しました。"
     redirect_to users_url
   end
 
   def following
     @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following.page(params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
-
 
     private
 

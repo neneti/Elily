@@ -1,17 +1,17 @@
-- provide(:title, @title)
+.container.my-5
   .row
-    .col-md-4
-      = gravatar_for @user
-      h1
-        = @user.name
-        = link_to "view my profile", @user
-        h3
-          = @user.microposts.count
-          = render 'shared/stats'
+    .col-md-4.text-center.pt-3
+      - if @user.avatar.attached?
+        = image_tag @user.avatar, size: '120x120', class: 'rounded-circle'
+      - else
+        = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
+        br
+        = render 'shared/stats'
     .col-md-8
-      h3
+      h3 
         = @title
         - if @users.any?
-          ul
-            = render @users
-            = paginate @users
+          = render @user
+          .row.mt-5
+            .mx-auto
+              = paginate @users

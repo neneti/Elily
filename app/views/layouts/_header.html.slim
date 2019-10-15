@@ -12,7 +12,7 @@ header
             li.nav-item
               = link_to 'カレンダー', users_path, class: 'nav-link'
             li.nav-item
-              = link_to '投稿する', users_path, class: 'nav-link'
+              = link_to '投稿する', new_micropost_path, class: 'nav-link'
               li.nav-item.dropdown
                 a.nav-link.dropdown-toggle#navbarDropdown role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
                   - if current_user.avatar.attached?
