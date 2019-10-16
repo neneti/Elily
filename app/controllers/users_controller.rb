@@ -4,13 +4,14 @@ before_action :logged_in_user, only: [:index, :edit, :update, :destroy,:followin
 before_action :correct_user,   only: [:edit, :update]
 before_action :admin_user,     only: :destroy
 
-  def index
+  def index 
     @users = User.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page])
+    @microposts_cards = @user.microposts.recent
   end
 
   def new
@@ -49,14 +50,14 @@ before_action :admin_user,     only: :destroy
   end
 
   def following
-    @title = "Following"
+    @title = "フォロー"
     @user  = User.find(params[:id])
     @users = @user.following.page(params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = "フォロワー"
     @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page])
     render 'show_follow'

@@ -15,7 +15,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "投稿が完了しました。"
-      redirect_to root_url
+      redirect_to @micropost
     else
       @feed_items = []
       render 'static_pages/home'
@@ -32,7 +32,7 @@ private
 
   def micropost_params
     params.require(:micropost).permit(:content, :start_time,
-                                      :title, illusts: [] )
+                                      :title, :illusts)
   end
 
   def correct_user

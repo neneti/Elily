@@ -1,7 +1,7 @@
-.row.mt-5
+.row.mt-5.mx-auto style="width:700px"
   - @users.each do |user|
     .col-md-6.my-2
-      .media.bg-white.border#user-media
+      .media.bg-white.border
         .p-1
           = link_to user do
             - if user.avatar.attached?
@@ -10,3 +10,4 @@
               = image_tag '/assets/user_dummy.jpg', size: "50x50", class: 'rounded-circle'
         .media-body.ml-4.mt-2
           = link_to user.name, user
+          

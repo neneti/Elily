@@ -1,8 +1,8 @@
 .container.pt-5
-  .row.text-center
-    .col-md-2
-  = render partial: 'user'
+  h2.text-center
+    | ユーザー一覧
+  .row
+    = render partial: 'user'
   .row.mt-5
     .mx-auto
       = paginate @users
- 

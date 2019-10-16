@@ -1,0 +1,13 @@
+.container
+  .row.mx-auto
+     - microposts.each do |micropost|
+      .card.mb-2.mx-auto style="width: 200px"
+        .card-image
+          = link_to micropost_path(micropost) do
+            = image_tag micropost.illusts, class: 'card-img-top'
+          .card-body.text-right
+            p.card-text.text-center
+              = micropost.title
+            .ml-auto.pt-2
+              small.text-muted
+                = Date.parse(micropost.start_time.to_s).strftime("%Y年%m月%d日")

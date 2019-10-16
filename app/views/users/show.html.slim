@@ -1,41 +1,21 @@
 - provide(:title, @user.name)
-.container.my-5
+.container-fluid.mt-5
   .row
-    .col-md-4.text-center.pt-3
-      - if @user.avatar.attached?
-        = image_tag @user.avatar, size: '120x120', class: 'rounded-circle'
-      - else
-        = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
-        br
-        = render 'shared/stats'
-    .col-md-8.pt-3
-      .container.w-75
-        h3.border-bottom  = @user.name
-        p.container.text-wrap.my-3
-          = simple_format(@user.profile)
-
-  .container.pt-3
-    = month_calendar events: @microposts do |date, microposts|
-      = date.day
-
-      - microposts.each do |micropost|
-        = link_to micropost.title, micropost
+    .col-md-3.text-center.pt-3
+      = render 'shared/user_info'
+      p.text-center.my-3
+        = simple_format(@user.profile)
 
 
+    .col-md-6
+      .container.mt-3.
+        = month_calendar events: @microposts do |date, microposts|
+          = date.day
+          - microposts.each do |micropost|
+            = link_to micropost.title, micropost
 
 
-
-
-/    section
-    h1
-      = gravatar_for @user
-      = @user.name
-      = render 'shared/stats'
-  .col-md-8
-    = render 'follow_form' if logged_in?
-    - if @user.microposts.any?
-      h3
-        Microposts = @user.microposts.count
-    ol
-     = render @microposts
-     = paginate @microposts
+    .col-md-3.pt-3
+      .container
+        h3.text-center.mb-3  新着投稿
+        = render partial: 'shared/cards', locals: { microposts: @microposts_cards }
