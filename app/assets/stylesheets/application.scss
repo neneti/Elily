@@ -5,7 +5,7 @@
 @import "bootstrap";
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 
@@ -102,4 +102,33 @@ body {
     width: 80px;
     height: 80px;
   }
+}
+
+#comment-wrapper {
+  .user-image img {
+    width: 40px;
+    height: 40px;
+  }
+  .comment-content {
+    position: relative;
+    background-color: #fbfbfb;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px 18px;
+    margin-top: 3px;
+    max-width: 500px;
+  }
+}
+
+#form-comment-wrapper {
+  .comment-btn {
+    background-color:  rgb(159, 21, 208);
+    color: #fff;
+    font-size: 10px;
+  }
+
+}
+.sticky {
+  position: sticky;
+  bottom:  30px;
 }

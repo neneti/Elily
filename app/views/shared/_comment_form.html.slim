@@ -1,0 +1,6 @@
+.container.sticky#form-comment-wrapper
+  = form_with url: micropost_comments_path(micropost), local: true do |f|
+    .form-group.my-3
+      = f.text_area :content, class: 'form-control', placeholder: 'コメント（50文字以内）'
+      .d-flex.justify-content-end
+        = f.submit '送信', class:'btn comment-btn mt-1'

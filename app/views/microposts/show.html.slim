@@ -1,13 +1,16 @@
 .container-fluid.mt-5
   .row
-    .col-md-3.text-center.pt-5
+    .col-md-2.text-center.pt-5
       = render 'shared/user_info'
       p.text-center.my-3
         = simple_format(@user.profile)
-    .col-md-9
+    .col-md-8
       .container
-        = image_tag @micropost.illusts.variant(resize:'800x800').processed, class: 'py-5'
-        h3.mt-3.mb-2
+        = image_tag @micropost.illusts, class: 'py-3 w-100'
+        h3.mt-3.mb-3
           = @micropost.title
         p.mb-2
           = @micropost.content
+    .col-md-2
+      = render partial: 'shared/comments', locals: { micropost: @micropost }
+      = render partial: 'shared/comment_form', locals: { micropost: @micropost }
