@@ -1,0 +1,5 @@
+div id='like-form-#{micropost.id}'
+  - if micropost.like?(current_user)
+    = render partial: 'shared/unlike', locals: { micropost: micropost }
+  - else
+    = render partial: 'shared/like', locals: { micropost: micropost }

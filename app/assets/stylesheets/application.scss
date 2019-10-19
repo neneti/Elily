@@ -132,3 +132,16 @@ body {
   position: sticky;
   bottom:  30px;
 }
+
+#unlike-btn{
+  color: #32cd32;
+}
+
+.fav-img, .unfav-img {
+  opacity: 0.7;
+}
+
+.fav-img:hover, .unfav-img:hover {
+  opacity: 1;
+  cursor: pointer;
+}

@@ -11,6 +11,8 @@
           = @micropost.title
         p.mb-2
           = @micropost.content
+        p.text-muted お気に入り：　
+        = render partial: 'shared/like_form', locals: { micropost: @micropost }
     .col-md-2
       = render partial: 'shared/comments', locals: { micropost: @micropost }
       = render partial: 'shared/comment_form', locals: { micropost: @micropost }

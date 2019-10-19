@@ -1,5 +1,7 @@
 class Micropost < ApplicationRecord
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
   belongs_to :user
   has_one_attached :illusts
   default_scope -> { order(created_at: :desc) }
@@ -8,6 +10,18 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140 }
   validate  :illusts_size
   scope :recent, -> { order(start_time: :desc).limit(3) }
+
+  def like(user)
+    likes.create(user_id: user.id)
+  end
+
+  def unlike(user)
+    likes.find_by(user_id: user.id).destroy
+  end
+
+  def like?(user)
+    liked_users.include?(user)
+  end
 
   private
 

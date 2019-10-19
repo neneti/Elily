@@ -1,0 +1,5 @@
+- like = micropost.likes.find_by(user_id: current_user.id)
+= link_to like_path(like), method: :delete, remote: true do
+  = image_tag "fav-red.png", size: "20x20", class: "fav-img"
+  span.ml-1
+    = micropost.likes.count
