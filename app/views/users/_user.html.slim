@@ -1,5 +1,5 @@
-.row.mt-5.mx-auto style="width:700px"
-  - @users.each do |user|
+.row.mt-5.mx-auto  style="width:700px"
+  - users.each do |user|
     .col-md-6.my-2
       .media.bg-white.border
         .p-1
@@ -10,4 +10,6 @@
               = image_tag '/assets/user_dummy.jpg', size: "50x50", class: 'rounded-circle'
         .media-body.ml-4.mt-2
           = link_to user.name, user
-          
+          .float-right.mr-3
+            - unless current_user == user
+              = render partial: 'shared/follow_form', locals: { user: user }

@@ -1,8 +1,8 @@
 .text-center
-  - if @user.avatar.attached?
-    = image_tag @user.avatar, size: '120x120', class: 'rounded-circle'
+  - if user.avatar.attached?
+    = image_tag user.avatar, size: '120x120', class: 'rounded-circle'
   - else
     = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
-h4.my-3 = @user.name
-= render 'shared/stats'
-= render 'users/follow_form'
+h4.my-3 = user.name
+= render partial: 'shared/stats', locals: { user: user }
+= render partial: 'shared/follow_form', locals: { user: user }

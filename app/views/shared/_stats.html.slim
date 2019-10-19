@@ -1,12 +1,12 @@
-- @user ||= current_user
+- user ||= current_user
 .stats
-  = link_to following_user_path(@user)
+  = link_to following_user_path(user)
     strong#following.stat
-      = @user.following.count
+      = user.following.count
       br
       |  フォロー
-  = link_to followers_user_path(@user)
+  = link_to followers_user_path(user)
     strong#followers.stat
-      = @user.followers.count
+      = user.followers.count
       br
       |  フォロワー

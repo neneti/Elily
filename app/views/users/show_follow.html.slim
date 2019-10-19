@@ -1,17 +1,14 @@
-.container.my-5
+.container-fluid.mt-5
   .row
-    .col-md-4.text-center.pt-3
-      - if @user.avatar.attached?
-        = image_tag @user.avatar, size: '120x120', class: 'rounded-circle'
-      - else
-        = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
-        br
-        = render 'shared/stats'
-    .col-md-8
-      h3 
+    .col-md-3.text-center.pt-3
+      = render partial: 'shared/user_info', locals: { user: @user }
+      p.text-center.my-3
+        = simple_format(@user.profile)
+    .col-md-9
+      h3
         = @title
         - if @users.any?
-          = render @user
+          = render partial: 'users/user', locals: { users: @users }
           .row.mt-5
             .mx-auto
               = paginate @users

@@ -4,9 +4,18 @@ before_action :logged_in_user, only: [:index, :edit, :update, :destroy,:followin
 before_action :correct_user,   only: [:edit, :update]
 before_action :admin_user,     only: :destroy
 
-  def index 
-    @users = User.page(params[:page])
+  def index
+    @q = User.ransack(params[:q])
+    if params[:all_user].present?
+      @users = User.recent.page(params[:page])
+    else
+      @users = @q.result(distinct: true).recent.page(params[:page])
+      if @users.empty?
+        flash.now[:notice] = '該当するユーザーが見つかりませんでした。'
+      end
+    end  
   end
+
 
   def show
     @user = User.find(params[:id])

@@ -1,0 +1,5 @@
+- unless current_user?(user)
+  - if current_user.following?(user)
+    = render partial: 'shared/unfollow', locals: { user: user }
+  - else
+    = render partial: 'shared/follow', locals: { user: user }

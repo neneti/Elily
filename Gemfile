@@ -17,6 +17,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem "simple_calendar", "~> 2.0"
 gem 'counter_culture', '~> 2.2.2'
+gem 'ransack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record

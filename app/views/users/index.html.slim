@@ -1,8 +1,13 @@
 .container.pt-5
-  h2.text-center
-    | ユーザー一覧
+  h2.text-center  ユーザー一覧
+  = search_form_for @q do |f|
+    .d-flex.mt-5
+      = f.search_field :name_cont, class: 'form-control',
+                          placeholder: "ユーザー名を入力"
+      = f.submit class: 'btn search-btn ml-2'
+      = f.submit '全てのユーザー', class: 'btn ml-1', name: 'all_user'
   .row
-    = render partial: 'user'
+  = render partial: 'users/user', locals: { users: @users }
   .row.mt-5
     .mx-auto
       = paginate @users

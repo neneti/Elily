@@ -2,7 +2,7 @@
 .container-fluid.mt-5
   .row
     .col-md-3.text-center.pt-3
-      = render 'shared/user_info'
+      = render partial: 'shared/user_info', locals: { user: @user } 
       p.text-center.my-3
         = simple_format(@user.profile)
 
