@@ -15,6 +15,9 @@
         = f.label :start_time, "時間"
         = f.date_select :start_time, class: "form-control"
       .form-group
+        = f.label :tag_list, "タグ"
+        = f.text_field :tag_list, value: @micropost.tag_list.join(','), class: "form-control"
+      .form-group
         = f.file_field :illusts, class: "form-control"
       .form-group.text-center
         = f.submit "登録", class: "btn btn-info mt-4 w-100"

@@ -9,6 +9,7 @@
         = image_tag @micropost.illusts, class: 'py-3 w-100'
         h3.mt-3.mb-3
           = @micropost.title
+        = render partial:'shared/tag_list',locals: { tag_list: @micropost.tag_list }
         p.mb-2
           = @micropost.content
         p.text-muted お気に入り：　

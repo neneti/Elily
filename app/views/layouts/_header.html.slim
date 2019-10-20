@@ -8,9 +8,11 @@ header
         ul.navbar-nav.ml-auto
           - if logged_in?
             li.nav-item
-              = link_to 'ユーザーを探す', users_path, class: 'nav-link'
+              = link_to 'ユーザー検索', users_path, class: 'nav-link'
             li.nav-item
-              = link_to 'カレンダー', users_path, class: 'nav-link'
+              = link_to 'イラスト検索', microposts_path, class: 'nav-link'
+            li.nav-item
+              = link_to 'タグ検索', microposts_path(tag_name: "#"), class: 'nav-link'
             li.nav-item
               = link_to '投稿する', new_micropost_path, class: 'nav-link'
               li.nav-item.dropdown

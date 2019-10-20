@@ -2,6 +2,18 @@ class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  def index
+    if params[:tag_name]
+      @microposts = Micropost.tagged_with("#{params[:tag_name]}").recent.page(params[:page])
+    else
+      @q = Micropost.ransack(params[:q])
+      @microposts = @q.result(distinct: true).recent.page(params[:page])
+      if @microposts.empty?
+        flash.now[:notice] = '該当するイラストが見つかりませんでした。'
+      end
+    end
+  end
+
   def show
     @micropost = Micropost.find(params[:id])
     @user = @micropost.user
@@ -32,7 +44,8 @@ private
 
   def micropost_params
     params.require(:micropost).permit(:content, :start_time,
-                                      :title, :illusts)
+                                      :created_at_gteq,:title,
+                                      :illusts,:tag_list,:title_cont)
   end
 
   def correct_user

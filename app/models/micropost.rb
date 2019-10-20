@@ -10,7 +10,7 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140 }
   validate  :illusts_size
   scope :recent, -> { order(start_time: :desc).limit(3) }
-
+  acts_as_taggable
   def like(user)
     likes.create(user_id: user.id)
   end

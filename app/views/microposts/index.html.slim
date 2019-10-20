@@ -1,0 +1,31 @@
+.container.my-5
+  .text-center
+    - if @q.present?
+      h3.mb-5 タイトル、日付検索
+      = search_form_for @q do |f|
+        .form-group.row
+          = f.label :title_cont, 'タイトル：', class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.search_field :title_cont, class: 'form-control'
+        .form-group.row
+          = f.label :created_at_gteq, '投稿日：', class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.search_field :created_at_gteq, class: 'form-control',
+                                                    placeholder: '例：2019/10/10'
+        .form-group
+          = f.submit class: 'btn ml-2'
+    - else
+      h3.text-center.mb-3
+        |  タグ検索
+      h5.pt-3.mb-3
+        = form_tag :microposts, class: "mb-5" ,method: :get do
+          = label_tag :tag_name, "タグ:　"
+          = text_field_tag "tag_name"
+          = submit_tag "検索", class: "btn btn-info tag-btn"
+
+    .row
+  = render partial: 'shared/cards', locals: { microposts: @microposts }
+  .row.mt-5
+    .mx-auto
+      - if @microposts.present?
+        = paginate @microposts
