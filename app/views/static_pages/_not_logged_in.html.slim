@@ -1,0 +1,26 @@
+.bg-img.text-center
+  .bg-brack
+    .container
+        h1.display-2.text-light.pt-4
+          | OEkaking
+        h3.mt-4.text-light
+          | お絵かきモチベーション維持サイト
+          .text-center.mt-5
+            = link_to '新規登録', signup_path, class: "btn btn-light btn-main"
+            .text-center.mt-3
+            = link_to 'ログイン', login_path, class: "btn btn-light btn-main"
+            .text-center.mt-3
+            = link_to 'ツイッターログイン', "#", class: "btn btn-light btn-main btn-main"
+.container_pop
+  .container
+    h5.py-3.text-light 人気ユーザーランキング
+    - @user_ranking.each do |user|
+        = link_to user_path(user) do
+          - if user.avatar.attached?
+            = image_tag user.avatar, size: "50x50", class: 'rounded-circle'
+          - else
+            = image_tag '/assets/user_dummy.jpg', size: "50x50", class: 'rounded-circle'
+
+.container.border.border-success
+  h5.py-3.ml-4 新着投稿
+  = render partial: 'shared/cards', locals: { microposts: @microposts }

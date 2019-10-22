@@ -1,0 +1,19 @@
+.container-fluid.mt-5
+  .row
+    .col-md-2.text-center.pt-3
+      = render partial: 'shared/user_info', locals: { user: @user }
+      p.text-center.my-3
+        = simple_format(@user.profile)
+
+    .col-md-6
+      .container.mt-3
+        h3.text-center.mb-3  新着作品
+        = render partial: 'shared/cards', locals: { microposts: @all_microposts }
+      .container.mt-3
+        h3.text-center.mb-3  フォロー新着作品
+        = render partial: 'shared/cards', locals: { microposts: @microposts }
+
+    .col-md-4
+      .container.mt-3
+        h3.text-center.mb-3 週間TOP3
+        = render partial: 'shared/cards', locals: { microposts: @week_ranking }

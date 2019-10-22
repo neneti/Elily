@@ -2,13 +2,13 @@
 .container-fluid.mt-5
   .row
     .col-md-3.text-center.pt-3
-      = render partial: 'shared/user_info', locals: { user: @user } 
+      = render partial: 'shared/user_info', locals: { user: @user }
       p.text-center.my-3
         = simple_format(@user.profile)
 
 
     .col-md-6
-      .container.mt-3.
+      .container.mt-3
         = month_calendar events: @microposts do |date, microposts|
           = date.day
           - microposts.each do |micropost|

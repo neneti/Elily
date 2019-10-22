@@ -25,7 +25,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  
+
   paginates_per 8
   scope :recent, -> { order(updated_at: :desc) }
 
@@ -78,7 +78,10 @@ class User < ApplicationRecord
   end
 
   def feed
-    Micropost.where("user_id = ?", id)
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id",
+                                 user_id: self.id)
   end
 
   def follow(other_user)
@@ -93,6 +96,12 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def self.user_month_ranks
+    from  = Time.now.at_beginning_of_day
+    to    = (from + 1.month)
+    self.find(Like.where(created_at: from...to).group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+  end
+
   private
 
   def downcase_email
@@ -103,4 +112,5 @@ class User < ApplicationRecord
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
+
 end
