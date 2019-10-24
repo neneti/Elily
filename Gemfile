@@ -19,6 +19,8 @@ gem "simple_calendar", "~> 2.0"
 gem 'counter_culture', '~> 2.2.2'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'font-awesome-sass', '~> 5.11.2'
+gem 'pry-byebug'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record

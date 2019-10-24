@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :microposts do
     resources :comments, only: [:create, :destroy]
   end
+  resources :notifications, only: :index
   resources :likes, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

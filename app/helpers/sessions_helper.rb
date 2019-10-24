@@ -63,4 +63,8 @@ module SessionsHelper
     session[:forwarding_url] = request.original_url if request.get?
   end
 
+  def unchecked_notifications
+    @notifications = current_user.passive_notifications.where(checked: false)
+  end
+
 end

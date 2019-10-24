@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   before_create :create_activation_digest
   before_save   :downcase_email
-
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -100,6 +101,17 @@ class User < ApplicationRecord
     from  = Time.now.at_beginning_of_day
     to    = (from + 1.month)
     self.find(Like.where(created_at: from...to).group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+  end
+
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 
   private

@@ -3,11 +3,12 @@
 *= require simple_calendar
 */
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   padding-top: 55px;
 }
-
 
 
 .bg-img {
@@ -149,4 +150,11 @@ body {
 .tag-btn {
   margin-left: 3px;
   cursor: pointer;
+}
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
 }

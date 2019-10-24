@@ -1,30 +1,30 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user
 
   def create
     @micropost = Micropost.find(params[:micropost_id])
-    comment = @micropost.comments.build(comment_params)
-    comment.user = current_user
-    if comment.save
-      flash[:success] = 'コメントしました。'
-      redirect_back(fallback_location: micropost_path(@micropost))
+    @comment = @micropost.comments.build(comment_params)
+    @comment.user = current_user
+    if @comment.save
+      @micropost.create_notification_comment!(current_user, @comment.id)
+      flash[:success] = "コメントをしました"
+      redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = 'コメント入力に誤りがあります。'
-      redirect_back(fallback_location: micropost_path(@micropost))
+      flash[:success] = "コメントできませんでした"
+      redirect_back(fallback_location: root_path)
     end
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    @micropost = Micropost.find(comment.micropost_id)
-    comment.destroy
-    flash[:success] = 'コメントを削除しました。'
-    redirect_back(fallback_location: micropost_path(@micropost))
+    @micropost = Micropost.find(params[:micropost_id])
+    @comment = @micropost.comments.find(params[:id])
+    @comment.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
   def comment_params
-    params.permit(:content)
+    params.require(:comment).permit(:content,:created_at)
   end
+
 end

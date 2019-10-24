@@ -14,6 +14,28 @@
           = @micropost.content
         p.text-muted お気に入り：　
         = render partial: 'shared/like_form', locals: { micropost: @micropost }
-    .col-md-2
-      = render partial: 'shared/comments', locals: { micropost: @micropost }
-      = render partial: 'shared/comment_form', locals: { micropost: @micropost }
+    .col-md-2#comment-wrapper
+      - @comments.each do |comment|
+        .d-flex.flex-wrap.my-3.ml-1
+          .user-image
+            = link_to user_path(comment) do
+              - if comment.user.avatar.attached?
+                = image_tag comment.user.avatar, class: 'my-3 rounded-circle'
+              - else
+                = image_tag 'user_dummy.jpg', class: 'my-3 rounded-circle'
+          .d-flex.flex-column.ml-2
+            small.text-muted
+              = comment.user.name
+            .comment-content
+              small
+                = comment.content
+            .d-flex.flex-row.align-self-end.ml-1
+              small.text-muted
+                = Date.parse(comment.created_at.to_s).strftime("%m月%d日")
+              - if current_user == comment.user
+                = link_to '削除', micropost_comment_path(@micropost, comment),
+                          data: { confirm: 'コメントを削除します。よろしいですか？' },
+                          method: :delete,
+                          class: 'small text-muted pl-2 text-right',
+                          id: 'comment-delete'
+      = render partial: 'shared/comment_form', locals: { micropost: @micropost, comment: @comment }

@@ -15,8 +15,10 @@ class MicropostsController < ApplicationController
   end
 
   def show
-    @micropost = Micropost.find(params[:id])
+    @micropost = Micropost.includes(:user).find(params[:id])
     @user = @micropost.user
+    @comments = @micropost.comments.includes(:user).all
+    @comment = @micropost.comments.build(user_id: current_user.id) if current_user
   end
 
   def new

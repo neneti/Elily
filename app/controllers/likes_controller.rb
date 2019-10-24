@@ -4,6 +4,7 @@ class LikesController < ApplicationController
   def create
     @micropost = Micropost.find(params[:micropost_id])
     @micropost.like(current_user)
+    @micropost.create_notification_like!(current_user)
     respond_to do |format|
       format.html { redirect_back(fallback_location: root_path) }
       format.js
