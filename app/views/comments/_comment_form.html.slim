@@ -1,0 +1,6 @@
+.container.sticky#form-comment-wrapper
+  = form_with(model: [micropost, comment], remote: true) do |f|
+    .form-group.my-3
+      .d-flex.justify-content-center
+        = f.text_area :content, rows: 1, class: 'form-control', placeholder: 'コメント（50文字以内）'
+        = f.submit '送信', class:'btn comment-btn ml-1'

@@ -4,5 +4,6 @@
   - else
     = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
 h4.my-3 = user.name
-= render partial: 'shared/stats', locals: { user: user }
+div id="stats-area-#{user.id}"
+  = render partial: 'shared/stats', locals: { user: user }
 = render partial: 'shared/follow_form', locals: { user: user }

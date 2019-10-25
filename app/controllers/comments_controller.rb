@@ -6,8 +6,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       @micropost.create_notification_comment!(current_user, @comment.id)
-      flash[:success] = "コメントをしました"
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path) }
+        format.js
+      end
     else
       flash[:success] = "コメントできませんでした"
       redirect_back(fallback_location: root_path)
@@ -18,13 +20,16 @@ class CommentsController < ApplicationController
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.find(params[:id])
     @comment.destroy
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content,:created_at)
+    params.require(:comment).permit(:content, :post_id, :user_id)
   end
 
 end
