@@ -1,20 +1,28 @@
-.container-fluid.mt-5
+.container-fluid
   .row
     .col-md-2.text-center.pt-5
       = render partial: 'shared/user_info', locals: { user: @user }
-      p.text-center.my-3
-        = simple_format(@user.profile)
-    .col-md-8
+    .col-md-8.pt-5
       .container
+        - if current_user ==  @micropost.user
+          = link_to '削除', micropost_path(@micropost),
+                      method: :delete,
+                      data: { confirm: "「#{@micropost.title}」の記事を削除します。よろしいですか？" },
+                      class: 'float-right mr-2'
+          = link_to '編集', edit_micropost_path(@micropost), class: 'mr-3 float-right'
         = image_tag @micropost.illusts, class: 'py-3 w-100'
-        h3.mt-3.mb-3
+        .text-right.my-2.pr-2
+          = render partial: 'shared/like_form', locals: { micropost: @micropost }
+        h3.my-3.pl-3
           = @micropost.title
-        = render partial:'shared/tag_list',locals: { tag_list: @micropost.tag_list }
-        p.mb-2
-          = @micropost.content
-        p.text-muted お気に入り：　
-        = render partial: 'shared/like_form', locals: { micropost: @micropost }
-    .col-md-2#comment-wrapper
-      div id="comments_area"
-        = render partial: 'comments/comments', locals: { micropost: @micropost, comments: @comments }
+        p.my-2.pl-3 style="color:rgb(167, 167, 167)"
+          = simple_format(@micropost.content, {}, wrapper_tag: "p.my-2.pl-3")
+        .my-3.pl-3
+          = render partial:'shared/tag_list',locals: { tag_list: @micropost.tag_list }
+    .col-md-2.pt-5
+      .container
+        p.text-center.mb-3
+          i.far.fa-comment.font-weight.border-danger コメント
+        div id="comments_area"
+          = render partial: 'comments/comments', locals: { micropost: @micropost, comments: @comments }
   = render partial: 'comments/comment_form', locals: { micropost: @micropost, comment: @comment }

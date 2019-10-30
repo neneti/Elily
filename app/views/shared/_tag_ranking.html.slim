@@ -1,0 +1,4 @@
+.row.mx-auto
+  - tag_list.each do |tag|
+    span.badge.badge-pill.badge-primary.mb-3.mr-3.p-2.badge-size
+        = link_to tag, microposts_path(tag_name: tag.name), class: "text-white"

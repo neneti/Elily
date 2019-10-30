@@ -1,0 +1,9 @@
+.container.my-5
+  .container.text-center style="width:700px"
+    h3.mb-5
+      i.fas.fa-user-friends.font-weight.border-danger.ml-3 フォロー作品一覧
+  = render partial: 'shared/cards', locals: { microposts: @microposts }
+  .row.mt-5
+    .mx-auto
+      - if @microposts.present?
+        = paginate @microposts

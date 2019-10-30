@@ -5,11 +5,11 @@ class Micropost < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   belongs_to :user
   has_one_attached :illusts
-  scope :recent, -> (count) { order(start_time: :desc).limit(count) }
+  scope :recent_count, -> (count) { order(created_at: :desc).limit(count) }
+  scope :recent, -> { order(id: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
   validate  :illusts_size
-  scope :recent, -> { order(start_time: :desc).limit(3) }
   acts_as_taggable
 
   def like(user)
@@ -25,9 +25,21 @@ class Micropost < ApplicationRecord
   end
 
   def self.week_ranks
-    from  = Time.now.at_beginning_of_day
-    to    = (from + 6.day).at_end_of_day
-    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(3).pluck(:micropost_id))
+    from  = 1.week.ago.beginning_of_day
+    to    = Time.zone.now.end_of_day
+    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(5).pluck(:micropost_id))
+  end
+
+  def self.main_week_ranks
+    from  = 1.week.ago.beginning_of_day
+    to    = Time.zone.now.end_of_day
+    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(20).pluck(:micropost_id))
+  end
+
+  def self.main_month_ranks
+    from  = 1.month.ago.beginning_of_day
+    to    = Time.zone.now.end_of_day
+    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(20).pluck(:micropost_id))
   end
 
   def create_notification_like!(current_user)

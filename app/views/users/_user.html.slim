@@ -1,15 +1,15 @@
 .row.mt-5.mx-auto  style="width:700px"
   - users.each do |user|
     .col-md-6.my-2
-      .media.bg-white.border
-        .p-1
+      .media.border
+        .p-1.align-self-center.mr-3
           = link_to user do
             - if user.avatar.attached?
-              = image_tag user.avatar, size: "50x50", class: 'rounded-circle'
+              = image_tag user.avatar, size: "60x60", class: 'rounded-circle'
             - else
-              = image_tag '/assets/user_dummy.jpg', size: "50x50", class: 'rounded-circle'
-        .media-body.ml-4.mt-2
+              = image_tag '/assets/user_dummy.jpg', size: "60x60", class: 'rounded-circle'
+        h5.media-body.ml-2.mt-3
           = link_to user.name, user
-          .float-right.mr-3
+        .float-right.mr-3.mb-0
             - unless current_user == user
               = render partial: 'shared/follow_form', locals: { user: user }

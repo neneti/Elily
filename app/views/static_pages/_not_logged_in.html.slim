@@ -11,16 +11,24 @@
             = link_to 'ログイン', login_path, class: "btn btn-light btn-main"
             .text-center.mt-3
             = link_to 'ツイッターログイン', "#", class: "btn btn-light btn-main btn-main"
-.container_pop
-  .container
-    h5.py-3.text-light 人気ユーザーランキング
-    - @user_ranking.each do |user|
-        = link_to user_path(user) do
-          - if user.avatar.attached?
-            = image_tag user.avatar, size: "50x50", class: 'rounded-circle'
-          - else
-            = image_tag '/assets/user_dummy.jpg', size: "50x50", class: 'rounded-circle'
-
-.container.border.border-success
-  h5.py-3.ml-4 新着投稿
-  = render partial: 'shared/cards', locals: { microposts: @microposts }
+.container-fluid.mx-auto
+  .container.mb-5.top-bg
+    h4.pt-3
+      i.fas.fa-users.font-weight.border-primary.mb-3.ml-3   ピックアップユーザー
+    .row.justify-content-center
+      = render partial: 'shared/user_pickup', locals: { users: @users }
+  .container.my-5.top-bg
+    h4.pt-3
+     i.fas.fa-tags.font-weight.border-success.mb-3.ml-3 タグランキング
+    .row.justify-content-center
+      = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }
+  .container.my-5.top-bg
+    h4.pt-3
+      i.far.fa-images.font-weight.border-danger.mb-3.ml-3  新着作品
+    .row.justify-content-center
+      = render partial: 'shared/cards', locals: { microposts: @micropost_new }
+  .container.my-5.top-bg
+    h4.pt-3
+      i.fas.fa-crown.font-weight.border-warning.mb-3.ml-3  人気ランキング（週間）
+    .row.justify-content-center
+      = render partial: 'shared/cards', locals: { microposts: @micropost_ranking }

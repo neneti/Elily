@@ -1,22 +1,17 @@
 - provide(:title, @user.name)
-.container-fluid.mt-5
+.container-fluid
   .row
-    .col-md-3.text-center.pt-3
+    .col-md-2.text-center.pt-5
       = render partial: 'shared/user_info', locals: { user: @user }
-      p.text-center.my-3
-        = simple_format(@user.profile)
-
-
-    .col-md-6
+    .col-md-8.pt-5
       .container.mt-3
         = month_calendar events: @microposts do |date, microposts|
           = date.day
           - microposts.each do |micropost|
-            = link_to micropost.title, micropost
-
-
-    .col-md-3.pt-3
-      .container
-        h3.text-center.mb-3  新着投稿
+            p.m-auto.calendar-text
+              = link_to micropost.title, micropost
+    .col-md-2.pt-3.pt-5
+      .container.bg-white
+        p.text-center.mb-3
+          i.far.fa-images.font-weight.border-danger 新着作品
         = render partial: 'shared/cards', locals: { microposts: @microposts_cards }
-= render partial: 'shared/circle'

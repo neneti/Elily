@@ -4,7 +4,7 @@
   .form-inline
     span
       = link_to user_path(visitor) do
-        = image_tag visitor.avatar, size: "50x50" , class: 'rounded-circle'
+        = image_tag visitor.avatar, size: "50x50" , class: 'rounded-circle mr-2'
         strong
           = visitor.name
       = 'さんが'
@@ -25,9 +25,10 @@
               strong
                 = notification.micropost.user.name + 'さんの投稿'
         = "にコメントしました"
-        p.text-muted.mb-0
+        p.text-muted.ml-5
           = Comment.find_by(id: notification.comment_id)&.content
 
   .small.text-muted.text-right
     = time_ago_in_words(notification.created_at).upcase
+
   hr

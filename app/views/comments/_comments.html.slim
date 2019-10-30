@@ -1,5 +1,5 @@
 - comments.each do |comment|
-  .d-flex.flex-wrap.my-3.ml-1
+  .d-flex.flex-wrap.my-1.ml-1#comment-wrapper
     .user-image
       = link_to user_path(comment.user) do
         - if comment.user.avatar.attached?

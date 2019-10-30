@@ -1,12 +1,12 @@
 - user ||= current_user
 .stats
   = link_to following_user_path(user)
-    strong#following.stat
+    strong.stats
       = user.following.count
       br
       |  フォロー
   = link_to followers_user_path(user)
-    strong#followers.stat
+    strong.stats
       = user.followers.count
       br
       |  フォロワー

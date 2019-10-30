@@ -1,13 +1,12 @@
 class StaticPagesController < ApplicationController
   def home
-    @microposts = Micropost.recent.page(params[:page])
-    @user_ranking = User.user_month_ranks
-
+    @micropost_new = Micropost.recent_count(5)
+    @micropost_ranking = Micropost.week_ranks
+    @users = User.user_pickup
+    @tag = ActsAsTaggableOn::Tag.most_used(10)
     if logged_in?
       @user = current_user
-      @microposts = current_user.feed.page(params[:page])
-      @all_microposts = Micropost.recent.page(params[:page])
-      @week_ranking = Micropost.week_ranks
+      @feed_microposts = @user.feed.recent_count(5)
     end
   end
 end

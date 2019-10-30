@@ -1,5 +1,5 @@
-- provide(:title, '投稿')
+- provide(:title, '編集')
 .container.pt-5 style="width:500px"
   h3.pt-3.text-center
-    i.fas.fa-lightbulb.font-weight.border-warning.my-2  新規投稿
+    i.fas.fa-cog.font-weight.border-info.my-2 イラスト編集
   = render partial: 'form', locals: { micropost: @micropost }

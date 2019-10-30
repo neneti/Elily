@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
   end
   resources :microposts do
+    collection do
+      get :ranking, :following
+    end
     resources :comments, only: [:create, :destroy]
   end
   resources :notifications, only: :index

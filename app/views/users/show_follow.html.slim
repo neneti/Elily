@@ -1,12 +1,11 @@
-.container-fluid.mt-5
+.container-fluid
   .row
-    .col-md-3.text-center.pt-3
+    .col-md-2.text-center.pt-5
       = render partial: 'shared/user_info', locals: { user: @user }
-      p.text-center.my-3
-        = simple_format(@user.profile)
-    .col-md-9
-      h3
-        = @title
+    .col-md-10
+      h3.mb-5.pt-5.follow-align
+        i.fas.fa-user-friends.font-weight.border-danger
+          = @title
         - if @users.any?
           = render partial: 'users/user', locals: { users: @users }
           .row.mt-5

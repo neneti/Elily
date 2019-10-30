@@ -1,12 +1,12 @@
-.container.pt-5 style="width:600px"
-  h2.text-center  ユーザー一覧
+.container.pt-5 style="width:700px"
+  h3.pt-3.text-center
+    i.fas.fa-users.font-weight.border-primary.ml-3   ユーザー検索
   = search_form_for @q, class: 'mb-3' do |f|
+    .d-flex.mt-5
       = f.search_field :name_cont, class: 'form-control',
                           placeholder: "ユーザー名を入力"
-      = f.submit class: 'btn search-btn ml-2'
-
-      = f.submit '全てのユーザー', class: 'btn ml-3', name: 'all_user'
-  .row
+      = f.submit class: 'btn btn-success ml-2'
+      = f.submit '全てのユーザー', class: 'btn btn-warning ml-3', name: 'all_user'
   = render partial: 'users/user', locals: { users: @users }
   .row.mt-5
     .mx-auto

@@ -7,9 +7,24 @@
 @import "font-awesome";
 
 body {
-  padding-top: 55px;
+  padding-top: 45px;
+  a {
+    color: #6c6c6c;
+  }
 }
 
+.ranking-font {
+  font-size: 13px;
+}
+
+.navbar {
+  height: 45px;
+  background-color: rgb(164, 164, 164);
+}
+
+.header-icon  {
+  font-size: 1.2em
+}
 
 .bg-img {
   background: url(top.jpg);
@@ -25,6 +40,17 @@ body {
 
 .container_pop {
   background-color: rgb(113, 116, 112)
+}
+
+.top-bg {
+  border-bottom: dashed;
+  border-color: rgb(115, 115, 115);
+}
+
+.font-weight {
+  font-weight:bold;
+  color: rgb(115, 115, 115);
+  border-bottom: double;
 }
 
 .row-5 {
@@ -66,7 +92,7 @@ body {
 .stats {
   font-size: small;
   overflow: auto;
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 0;
   display: flex;
    justify-content: center;
@@ -131,8 +157,8 @@ body {
 }
 .sticky {
   position: sticky;
-  bottom:  30px;
-  width: 70%;
+  bottom:  0px;
+  width: 50%;
 }
 
 #unlike-btn{
@@ -158,4 +184,61 @@ body {
   padding-left: 1rem;
   padding-top: 0rem;
   color: #efa04c;
+}
+
+
+.calendar-text {
+  font-size: 14px;
+  overflow: auto;
+  justify-content: center;
+  a {
+    color: rgb(22, 181, 66);
+    &:hover {
+      text-decoration: none;
+      color: rgb(233, 36, 198);
+    }
+  }
+}
+
+#card-image {
+  .user-image img {
+    width: 30px;
+    height: 30px;
+  }
+  .micropost-image img {
+    width: 175px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+.pickup_avatar {
+  img {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.badge-size {
+  font-size: 15px;
+}
+
+.user-bg {
+  background-color: rgb(219, 219, 219);
+}
+
+.like-btn {
+  color: #ff9aef;
+}
+
+.card-title-text a {
+  color: rgb(107, 107, 107);
+}
+
+.ranking-border {
+  border-right: dotted rgb(107, 107, 107);
+}
+
+.follow-align {
+  text-align:  center;
 }

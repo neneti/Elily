@@ -13,14 +13,14 @@ before_action :admin_user,     only: :destroy
       if @users.empty?
         flash.now[:notice] = '該当するユーザーが見つかりませんでした。'
       end
-    end  
+    end
   end
 
 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page])
-    @microposts_cards = @user.microposts.recent
+    @microposts_cards = @user.microposts.recent_count(3)
   end
 
   def new

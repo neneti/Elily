@@ -1,0 +1,8 @@
+.row.mx-auto.my-3
+  - users.each do |user|
+    .pickup_avatar.mx-2
+      = link_to user_path(user) do
+        - if user.avatar.attached?
+          = image_tag user.avatar, class: 'rounded-circle border border-warning'
+        - else
+          = image_tag 'user_dummy.jpg', class: 'rounded-circle rounded-circle'

@@ -1,6 +1,6 @@
 header
-  nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
-    .container
+  nav.navbar.navbar-expand-md.navbar-light.fixed-top
+    .container-fluid
       = link_to 'OEkaking', root_path, class: "navbar-brand"
       button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbar-menu'
         span.navbar-toggler-icon
@@ -8,25 +8,40 @@ header
         ul.navbar-nav.ml-auto
           - if logged_in?
             li.nav-item
-              = link_to 'ユーザー検索', users_path, class: 'nav-link'
+              = link_to  ranking_microposts_path do
+                i.fas.fa-crown.pt-3.mx-2.header-icon.nav-link
             li.nav-item
-              = link_to 'イラスト検索', microposts_path, class: 'nav-link'
+              = link_to users_path do
+                i.fas.fa-users.pt-3.mx-2.header-icon.nav-link
             li.nav-item
-              = link_to 'タグ検索', microposts_path(tag_name: "#"), class: 'nav-link'
+              = link_to  microposts_path do
+                i.fas.fa-images.pt-3.mx-2.header-icon.nav-link
             li.nav-item
-              = link_to '投稿する', new_micropost_path, class: 'nav-link'
+              = link_to microposts_path(tag_name: "#")
+                i.fas.fa-tags.pt-3.mx-2.header-icon.nav-link
+            li.nav-item
+              = link_to  new_micropost_path do
+                i.fas.fa-file-upload.pt-3.mx-2.header-icon.nav-link
+            li.nav-item
+              = link_to  notifications_path do
+                  - if unchecked_notifications.any?
+                    span.fa-stack
+                      i.far.fa-bell.fa-stack-2x.pt-3.mx-2.header-icon.nav-link
+                      i.fas.fa-circle.n-circle.fa-stack-1x.pt-3.mx-2.header-icon.nav-link
+                  - else
+                    i.far.fa-bell.pt-3.mx-2.header-icon.nav-link
               li.nav-item.dropdown
                 a.nav-link.dropdown-toggle#navbarDropdown role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
                   - if current_user.avatar.attached?
-                    = image_tag current_user.avatar, size: "25x25", class: 'rounded-circle'
+                    = image_tag current_user.avatar, size: "30x30", class: 'rounded-circle'
                   - else
-                    = image_tag '/assets/user_dummy.jpg', size: "25x25", class: 'rounded-circle'
-                .dropdown-menu aria-labelledby='navbarDropdown'
+                    = image_tag '/assets/user_dummy.jpg', size: "30x30", class: 'rounded-circle'
+                .dropdown-menu.dropdown-menu-right aria-labelledby='navbarDropdown'
                   = link_to 'マイページ', current_user, class: 'dropdown-item'
                   = link_to '設定', edit_user_path(current_user), class: 'dropdown-item'
                   = link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item'
           - else
             li.nav-item
-              = link_to '新規登録', signup_path, class: 'nav-link'
+              = link_to '登録', signup_path, class: 'nav-link'
               li.nav-item
               = link_to 'ログイン', login_path, class: 'nav-link'

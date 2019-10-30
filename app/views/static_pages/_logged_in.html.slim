@@ -1,19 +1,33 @@
-.container-fluid.mt-5
+.container-fluid
   .row
-    .col-md-2.text-center.pt-3
+    .col-md-2.text-center.pt-5
       = render partial: 'shared/user_info', locals: { user: @user }
-      p.text-center.my-3
-        = simple_format(@user.profile)
-
-    .col-md-6
-      .container.mt-3
-        h3.text-center.mb-3  新着作品
-        = render partial: 'shared/cards', locals: { microposts: @all_microposts }
-      .container.mt-3
-        h3.text-center.mb-3  フォロー新着作品
-        = render partial: 'shared/cards', locals: { microposts: @microposts }
-
-    .col-md-4
-      .container.mt-3
-        h3.text-center.mb-3 週間TOP3
-        = render partial: 'shared/cards', locals: { microposts: @week_ranking }
+    .col-md-10
+      .container.my-5.top-bg
+        h4.pt-3
+          i.far.fa-images.font-weight.border-danger.mb-3.ml-3  総合新着作品
+          = link_to '…もっと見る', microposts_path, class: "ranking-font ml-3"
+        .row.justify-content-center
+          = render partial: 'shared/cards', locals: { microposts: @micropost_new }
+      .container.my-5.top-bg
+        h4.pt-3
+          i.fas.fa-user-friends.font-weight.border-info.mb-3.ml-3  フォロー新着作品
+          = link_to '…もっと見る', following_microposts_path, class: "ranking-font ml-3"
+        .row.justify-content-center
+          = render partial: 'shared/cards', locals: { microposts: @feed_microposts }
+      .container.my-5.top-bg
+        h4.pt-3
+          i.fas.fa-crown.font-weight.border-warning.mb-3.ml-3  人気ランキング（週間）
+          = link_to '…もっと見る', ranking_microposts_path, class: "ranking-font ml-3"
+        .row.justify-content-center
+          = render partial: 'shared/cards', locals: { microposts: @micropost_ranking }
+      .container.mb-5.top-bg
+        h4.pt-3
+          i.fas.fa-users.font-weight.border-primary.mb-２.ml-3   ピックアップユーザー
+        .row.justify-content-center
+          = render partial: 'shared/user_pickup', locals: { users: @users }
+      .container.my-5.top-bg
+        h4.pt-3
+         i.fas.fa-tags.font-weight.border-success.mb-3.ml-3 人気タグTOP10
+        .row.justify-content-center
+          = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }

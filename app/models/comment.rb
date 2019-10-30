@@ -5,4 +5,5 @@ class Comment < ApplicationRecord
   validates :content, presence: true, length: { maximum: 50 }
   validates :user_id, presence: true
   validates :micropost_id, presence: true
+  scope :recent, -> { order(updated_at: :desc) }
 end

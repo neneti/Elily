@@ -81,8 +81,7 @@ class User < ApplicationRecord
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id",
-                                 user_id: self.id)
+    Micropost.where("user_id IN (#{following_ids}) ", user_id: self.id)
   end
 
   def follow(other_user)
@@ -97,9 +96,9 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  def self.user_month_ranks
-    from  = Time.now.at_beginning_of_day
-    to    = (from + 1.month)
+  def self.user_pickup
+    from  = 1.week.ago.beginning_of_day
+    to    = Time.zone.now.end_of_day
     self.find(Like.where(created_at: from...to).group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
   end
 

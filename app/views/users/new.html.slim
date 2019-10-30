@@ -1,21 +1,6 @@
-- provide(:title, 'New')
-.container.py-5.px-md-5 style="width:450px"
-  h1.text-center.mb-5 ユーザー登録
-
-  .container.w-100.w-sm-25
-    = form_with model: @user, local: true do |f|
-      = render "shared/error_messages",object: f.object
-      .form-group
-        = f.label :name, "名前"
-        = f.text_field :name, class: "form-control"
-      .form-group
-        = f.label :email, "メールアドレス"
-        = f.text_field :email, class: "form-control"
-      .form-group
-        = f.label :password, "パスワード"
-        = f.password_field :password, class: "form-control"
-      .form-group
-        = f.label :password_confirmation, "パスワード（確認）"
-        = f.password_field :password_confirmation, class: "form-control"
-      .form-group.text-center
-        = f.submit "登録", class: "btn btn-info w-100"
+- provide(:title, 'ユーザー登録')
+.bg-mask.py-5
+  .container style="width:500px"
+    h3.pt-3.text-center
+      i.fas.fa-users.font-weight.border-primary.my-3  ユーザー登録
+    = render partial: 'form', locals: { user: @user }

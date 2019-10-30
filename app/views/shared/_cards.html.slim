@@ -1,13 +1,29 @@
-.container
-  .row.mx-auto
-     - microposts.each do |micropost|
-      .card.mb-2.mx-auto style="width: 200px"
-        .card-image
-          = link_to micropost_path(micropost) do
-            = image_tag micropost.illusts, class: 'card-img-top'
+
+  .row.justify-content-center
+    - microposts.each do |micropost|
+      div.mx-2.mb-3
+        .card.my-2#card-image
+          .d-flex.flex-row.m-1
+            .user-image
+              = link_to user_path(micropost.user) do
+                - if micropost.user.avatar.attached?
+                  = image_tag micropost.user.avatar, class: 'rounded-circle'
+                - else
+                  = image_tag 'user_dummy.jpg', class: 'rounded-circle'
+            small.text-muted.ml-3.pt-1
+              = micropost.user.name
+          .micropost-image.p-1
+            = link_to micropost_path(micropost) do
+              = image_tag micropost.illusts, class: 'card-img-top rounded'
           .card-body.text-right
-            p.card-text.text-center
-              = micropost.title
-            .ml-auto.pt-2
+            p.card-text.text-center.card-title-text
+              = link_to micropost_path(micropost) do
+                = micropost.title
+          .d-flex.mb-1
+            .ml-2
+              = render partial: 'shared/like_icon', locals: { micropost: micropost }
+            .ml-2
+              = render partial: 'shared/comment_icon', locals: { micropost: micropost }
+            .ml-auto.mb-2
               small.text-muted
                 = Date.parse(micropost.start_time.to_s).strftime("%Y年%m月%d日")

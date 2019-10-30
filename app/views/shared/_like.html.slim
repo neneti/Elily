@@ -1,4 +1,4 @@
 = link_to likes_path(params: { micropost_id: micropost.id }), method: :post, remote: true do
-  = image_tag "fav-0.png", size: "20x20", class: "unfav-img"
-  span.ml-1#article-like-count
-    = micropost.likes.count
+  i.far.fa-heart.like-btn
+span.ml-1
+  = micropost.likes.count
