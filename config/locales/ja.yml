@@ -7,6 +7,20 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      user: ユーザー
+      micropost: 投稿
+    attributes:
+      user:
+        name: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        avatar: プロフィール画像
+        password_confirmation: 確認用パスワード
+      micropost:
+        title: タイトル
+        illusts: イラスト
+        content: 詳細
   date:
     abbr_day_names:
     - 日

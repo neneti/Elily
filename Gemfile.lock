@@ -52,7 +52,7 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (9.7.0)
+    autoprefixer-rails (9.7.1)
       execjs
     bcrypt (3.1.13)
     bindex (0.8.1)
@@ -185,7 +185,7 @@ GEM
     multi_json (1.14.1)
     mysql2 (0.5.2)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
@@ -289,6 +289,8 @@ GEM
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
     spring (2.1.0)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -357,6 +359,7 @@ DEPENDENCIES
   simple_calendar (~> 2.0)
   slim-rails
   spring
+  spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails (= 3.2.1)
   turbolinks (~> 5)

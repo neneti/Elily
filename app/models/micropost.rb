@@ -8,7 +8,8 @@ class Micropost < ApplicationRecord
   scope :recent_count, -> (count) { order(created_at: :desc).limit(count) }
   scope :recent, -> { order(id: :desc) }
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :title, presence: true, length: { maximum: 20 }
+  validates :content, length: { maximum: 120 }
   validate  :illusts_size
   acts_as_taggable
 
@@ -81,8 +82,12 @@ class Micropost < ApplicationRecord
   private
 
    def illusts_size
-     if illusts.blob.byte_size > 1.megabytes
-       errors.add(:illusts, "5MB以下にしてください。")
+     if illusts.attached?
+       if illusts.blob.byte_size > 1.megabytes
+         errors.add(:illusts, "1MB以下にしてください。")
+       end
+     else
+       errors.add(:illusts, 'ファイルを添付してください')
      end
    end
 end

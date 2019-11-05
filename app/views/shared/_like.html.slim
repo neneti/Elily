@@ -1,4 +1,4 @@
 = link_to likes_path(params: { micropost_id: micropost.id }), method: :post, remote: true do
-  i.far.fa-heart.like-btn
+  i.far.fa-heart.like-btn#like-btn
 span.ml-1
   = micropost.likes.count

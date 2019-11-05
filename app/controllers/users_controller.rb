@@ -11,7 +11,7 @@ before_action :admin_user,     only: :destroy
     else
       @users = @q.result(distinct: true).recent.page(params[:page])
       if @users.empty?
-        flash.now[:notice] = '該当するユーザーが見つかりませんでした。'
+        flash.now[:info] = '該当するユーザーが見つかりませんでした。'
       end
     end
   end
@@ -32,7 +32,7 @@ before_action :admin_user,     only: :destroy
     if @user.save
       @user.send_activation_email
       flash[:info] = '登録を完了するには、メールを確認してください。'
-      redirect_to @user
+      redirect_to root_url
     else
       render :new
     end

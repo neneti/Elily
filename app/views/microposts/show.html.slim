@@ -6,7 +6,7 @@
       .container
         - if current_user ==  @micropost.user
           = link_to '削除', micropost_path(@micropost),
-                      method: :delete,
+                      method: :DELETE,
                       data: { confirm: "「#{@micropost.title}」の記事を削除します。よろしいですか？" },
                       class: 'float-right mr-2'
           = link_to '編集', edit_micropost_path(@micropost), class: 'mr-3 float-right'

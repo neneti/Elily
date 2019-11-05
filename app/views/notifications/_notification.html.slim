@@ -4,7 +4,10 @@
   .form-inline
     span
       = link_to user_path(visitor) do
-        = image_tag visitor.avatar, size: "50x50" , class: 'rounded-circle mr-2'
+        - if visitor.avatar.attached?
+          = image_tag visitor.avatar, size: "50x50" , class: 'rounded-circle mr-2'
+        - else
+          = image_tag '/assets/user_dummy.jpg', size: "50x50", class: 'rounded-circle mr-2'
         strong
           = visitor.name
       = 'さんが'

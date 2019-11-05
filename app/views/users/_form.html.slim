@@ -19,7 +19,11 @@
     .form-group
       = f.label :password_confirmation, 'パスワード（確認）'
       = f.password_field :password_confirmation, class: 'form-control'
-    .form-group.text-center
-      = f.submit '更新', class: 'btn btn-info btn-block'
+    - if local_assigns[:edit_flag].present?
+      .form-group.text-center
+        = f.submit '更新', class: 'btn btn-info btn-block'
+    - else
+      .form-group.text-center
+        = f.submit '送信', class: 'btn btn-info btn-block' 
     .text-center
       = link_to '削除', @user, method: :delete, data: { confirm: "アカウントを削除します。よろしいですか？"}, class: 'btn btn-danger btn-block'

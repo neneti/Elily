@@ -1,16 +1,19 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:create, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
     if params[:tag_name]
       @microposts = Micropost.tagged_with("#{params[:tag_name]}").recent.page(params[:page])
       @tag = ActsAsTaggableOn::Tag.most_used(10)
+      if @microposts.empty?
+        flash.now[:warning] = '該当するイラストが見つかりませんでした。'
+      end
     else
       @q = Micropost.ransack(params[:q])
       @microposts = @q.result(distinct: true).recent.page(params[:page]).per(15)
       if @microposts.empty?
-        flash.now[:notice] = '該当するイラストが見つかりませんでした。'
+        flash.now[:warning] = '該当するイラストが見つかりませんでした。'
       end
     end
   end
@@ -33,7 +36,7 @@ class MicropostsController < ApplicationController
       redirect_to @micropost
     else
       @feed_items = []
-      render 'static_pages/home'
+      render :new
     end
   end
 
@@ -53,7 +56,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     flash[:success] = "投稿を削除しました。"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
   def following
