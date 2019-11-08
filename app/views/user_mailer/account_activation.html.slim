@@ -1,6 +1,6 @@
 p = "こんにちは、" + @user.name + "さん。"
-p = "oekakingにご登録いただいたメールアドレスを確認します。\n下記へアクセスし、登録を完了してください。"
+p = "Elilyにご登録いただいたメールアドレスを確認します。\n下記へアクセスし、登録を完了してください。"
 
 = link_to "登録を完了する", edit_account_activation_url(@user.activation_token, email: @user.email)
 
-p 発行元：oekaking
+p 発行元：Elily

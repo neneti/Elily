@@ -1,11 +1,11 @@
 .container.bg-white
   p.text-center
-    i.far.fa-user.font-weight.border-warning.yb-2 プロフィール
+    i.far.fa-user.font-weight.border-warning.mb-2 プロフィール
   - if user.avatar.attached?
-    = image_tag user.avatar, size: '120x120', class: 'rounded-circle'
+    = image_tag user.avatar, size: '100x100', class: 'rounded-circle'
   - else
-    = image_tag  '/assets/user_dummy.jpg', size: '120x120', class: 'rounded-circle'
-  h4.my-3 = user.name
+    = image_tag  '/assets/user_dummy.jpg', size: '100x100', class: 'rounded-circle'
+  h5.my-4 = user.name
   div id="stats-area"
     = render partial: 'shared/stats', locals: { user: user }
   = render partial: 'shared/follow_form', locals: { user: user }

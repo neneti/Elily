@@ -2,33 +2,33 @@
   .bg-brack
     .container
         h1.display-2.text-light.pt-4
-          | OEkaking
-        h3.mt-4.text-light
-          | お絵かきモチベーション維持サイト
+          | Elily
+        h4.text-light.pt-3
+          | イラスト投稿サイト
           .text-center.mt-5
-            = link_to '新規登録', signup_path, class: "btn btn-light btn-main"
+            = link_to '新規登録', signup_path, class: "btn btn-light btn-main new-btn"
             .text-center.mt-3
-            = link_to 'ログイン', login_path, class: "btn btn-light btn-main"
+            = link_to 'ログイン', login_path, class: "btn btn-light btn-main login-btn"
             .text-center.mt-3
-            = link_to 'ツイッターログイン', "#", class: "btn btn-light btn-main btn-main"
+            = link_to 'テストログイン', test_user_login_path, class: "btn btn-light btn-main btn-main test-btn"
 .container-fluid.mx-auto
-  .container.mb-5.top-bg
-    h4.pt-3
-      i.fas.fa-users.font-weight.border-primary.mb-3.ml-3   ピックアップユーザー
-    .row.justify-content-center
-      = render partial: 'shared/user_pickup', locals: { users: @users }
-  .container.my-5.top-bg
-    h4.pt-3
-     i.fas.fa-tags.font-weight.border-success.mb-3.ml-3 タグランキング
-    .row.justify-content-center
-      = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }
-  .container.my-5.top-bg
+  .container.mb-2.top-bg
     h4.pt-3
       i.far.fa-images.font-weight.border-danger.mb-3.ml-3  新着作品
     .row.justify-content-center
       = render partial: 'shared/cards', locals: { microposts: @micropost_new }
-  .container.my-5.top-bg
+  .container.mb-2.top-bg
     h4.pt-3
       i.fas.fa-crown.font-weight.border-warning.mb-3.ml-3  人気ランキング（週間）
     .row.justify-content-center
       = render partial: 'shared/cards', locals: { microposts: @micropost_ranking }
+  .container.mb-2.top-bg
+    h4.pt-3
+      i.fas.fa-users.font-weight.border-primary.mb-3.ml-3   ピックアップユーザー
+    .row.justify-content-center
+      = render partial: 'shared/user_pickup', locals: { users: @users }
+  .container.mb-2.top-bg
+    h4.pt-3
+     i.fas.fa-tags.font-weight.border-success.mb-3.ml-3 タグランキング
+    .row.justify-content-center
+      = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }

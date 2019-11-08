@@ -6,9 +6,6 @@ class MicropostsController < ApplicationController
     if params[:tag_name]
       @microposts = Micropost.tagged_with("#{params[:tag_name]}").recent.page(params[:page])
       @tag = ActsAsTaggableOn::Tag.most_used(10)
-      if @microposts.empty?
-        flash.now[:warning] = '該当するイラストが見つかりませんでした。'
-      end
     else
       @q = Micropost.ransack(params[:q])
       @microposts = @q.result(distinct: true).recent.page(params[:page]).per(15)

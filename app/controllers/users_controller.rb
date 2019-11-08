@@ -72,6 +72,11 @@ before_action :admin_user,     only: :destroy
     render 'show_follow'
   end
 
+  def posts
+    @user  = User.find(params[:id])
+    @microposts = @user.microposts.page(params[:page])
+  end
+
     private
 
   def user_params

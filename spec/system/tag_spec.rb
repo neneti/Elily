@@ -25,7 +25,7 @@ describe 'タグ検索', type: :system do
       it '投稿が表示されないこと' do
         fill_in 'tag_name', with: 'ああああああ'
         click_on '検索'
-        expect(page).to have_content '該当するイラストが見つかりませんでした。'
+        expect(page).not_to have_content micropost.title
       end
     end
   end

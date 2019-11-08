@@ -19,7 +19,7 @@ Rails.application.configure do
   # config.require_master_key = true
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { :host => 'elili.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'elily.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :user_name      => ENV['SENDGRID_USERNAME'],

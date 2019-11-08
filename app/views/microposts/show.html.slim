@@ -23,6 +23,7 @@
       .container
         p.text-center.mb-3
           i.far.fa-comment.font-weight.border-danger コメント
-        div id="comments_area"
-          = render partial: 'comments/comments', locals: { micropost: @micropost, comments: @comments }
+        .comment-container
+          div id="comments_area"
+            = render partial: 'comments/comments', locals: { micropost: @micropost, comments: @comments }
   = render partial: 'comments/comment_form', locals: { micropost: @micropost, comment: @comment }

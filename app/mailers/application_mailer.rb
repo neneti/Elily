@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'elili.herokuapp.com'
+  default from: 'elily.herokuapp.com'
   layout 'mailer'
 end

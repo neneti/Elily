@@ -3,6 +3,6 @@
     .pickup_avatar.mx-2
       = link_to user_path(user) do
         - if user.avatar.attached?
-          = image_tag user.avatar, class: 'rounded-circle border border-warning'
+          = image_tag user.avatar, class: 'rounded-circle border border-warning spin'
         - else
-          = image_tag 'user_dummy.jpg', class: 'rounded-circle rounded-circle'
+          = image_tag 'user_dummy.jpg', class: 'rounded-circle rounded-circle spin'

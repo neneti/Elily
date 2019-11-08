@@ -10,6 +10,8 @@
           - microposts.each do |micropost|
             p.m-auto.calendar-text
               = link_to micropost.title, micropost
+      p.text-right
+        = link_to 'もっと投稿を見る', posts_user_path, class: "ranking-font ml-3"
     .col-md-2.pt-3.pt-5
       .container.bg-white
         p.text-center.mb-3

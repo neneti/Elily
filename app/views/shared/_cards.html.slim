@@ -14,7 +14,7 @@
               = micropost.user.name
           .micropost-image.p-1
             = link_to micropost_path(micropost) do
-              = image_tag micropost.illusts, class: 'card-img-top rounded'
+              = image_tag micropost.illusts, class: 'card-img-top rounded card-hover'
           .card-body.text-right
             p.card-text.text-center.card-title-text
               = link_to micropost_path(micropost) do

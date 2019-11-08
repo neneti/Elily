@@ -6,8 +6,16 @@ User.create!(name:  "Example User",
              activated: true,
              activated_at: Time.zone.now)
 
-User.create!(name:  "ねねち",
-             email: "gen414@outlook.jp",
+User.create!(name:  "Example User2",
+             email: "example2@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
+
+User.create!(name:  "テストユーザー",
+             email: "test-user@example.com",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true,
