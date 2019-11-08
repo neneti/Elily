@@ -9,4 +9,6 @@ class StaticPagesController < ApplicationController
       @feed_microposts = @user.feed.recent_count(5)
     end
   end
+
+  def explanation; end
 end

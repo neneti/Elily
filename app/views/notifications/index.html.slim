@@ -1,7 +1,9 @@
+h3.pt-5.text-center
+  i.far.fa-bell.font-weight.border-primary.ml-3   通知
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 - if notifications.exists?
   = render notifications
   = paginate notifications
 - else
-  p
+  p.text-center
     | 通知はありません

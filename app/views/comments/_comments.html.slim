@@ -5,7 +5,7 @@
         - if comment.user.avatar.attached?
           = image_tag comment.user.avatar, class: 'my-3 rounded-circle'
         - else
-          = image_tag 'user_dummy.jpg', class: 'my-3 rounded-circle'
+          = image_tag 'user_dummy.png', class: 'my-3 rounded-circle'
     .d-flex.flex-column.ml-2
       small.text-muted
         = comment.user.name

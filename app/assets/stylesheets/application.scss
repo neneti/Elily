@@ -7,7 +7,7 @@
 @import "font-awesome";
 
 body {
-  padding-top: 45px;
+  padding-top: 50px;
   a {
     color: #6c6c6c;
   }
@@ -18,7 +18,7 @@ body {
 }
 
 .navbar {
-  height: 45px;
+  height: 50px;
   background-color: #dfdfdf;
 }
 
@@ -31,12 +31,12 @@ body {
   background: url(top.jpg);
   background-size: cover;
   background-position: center;
-  height: 500px;
+  height: 650px;
 }
 
 .bg-brack {
   background-color: rgba(0,0,0,0.7);
-  height: 500px;
+  height: 650px;
 }
 
 .container_pop {
@@ -288,4 +288,34 @@ body {
 .comment-container {
   height: 600px;
   overflow: auto;
+}
+
+.top-img {
+  height: auto;
+  width: 400px;
+}
+
+.top-btn {
+  border-bottom: 0.1875em solid rgb(145, 145, 145);
+  background-color: rgb(237, 237, 237);
+  color: rgb(23, 23, 23);
+  display: inline-block;
+  padding: 0.6em 2em;
+  margin: 0 0 1em;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  &:hover {
+  border-bottom-color: transparent;
+  transform: translateY(0.1875em);
+ }
+}
+
+.header-img {
+  height: auto;
+  width: 100px;
+}
+
+.alert-size {
+  font-size: 15px;
+  height: 30px;
 }

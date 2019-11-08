@@ -10,7 +10,7 @@ html
   body
     = render 'layouts/header'
     - flash.each do |message_type, message|
-        div class="alert alert-#{message_type} text-center mb-0 rounded-0"
+        div class="alert alert-#{message_type} text-center mb-0 pt-1 rounded-0 alert-size"
           = message
     = yield
     = render 'layouts/footer'

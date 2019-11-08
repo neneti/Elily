@@ -1,16 +1,16 @@
 .bg-img.text-center
   .bg-brack
     .container
-        h1.display-2.text-light.pt-4
-          | Elily
-        h4.text-light.pt-3
-          | イラスト投稿サイト
+        .pt-5
+          = image_tag '/assets/top-logo.png', class: 'pt-5 top-img'
+        h3.text-light.pt-3
+          | イラストを描いてどんどん投稿しよう
           .text-center.mt-5
-            = link_to '新規登録', signup_path, class: "btn btn-light btn-main new-btn"
-            .text-center.mt-3
-            = link_to 'ログイン', login_path, class: "btn btn-light btn-main login-btn"
-            .text-center.mt-3
-            = link_to 'テストログイン', test_user_login_path, class: "btn btn-light btn-main btn-main test-btn"
+            = link_to '新規登録', signup_path, class: "btn btn-light btn-main new-btn top-btn"
+            .text-center.mt-1
+            = link_to 'ログイン', login_path, class: "btn btn-light btn-main login-btn top-btn"
+            .text-center.mt-1
+            = link_to 'テストログイン', test_user_login_path, class: "btn btn-light btn-main btn-main test-btn top-btn"
 .container-fluid.mx-auto
   .container.mb-2.top-bg
     h4.pt-3

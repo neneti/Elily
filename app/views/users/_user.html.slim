@@ -7,7 +7,7 @@
             - if user.avatar.attached?
               = image_tag user.avatar, size: "60x60", class: 'rounded-circle'
             - else
-              = image_tag '/assets/user_dummy.jpg', size: "60x60", class: 'rounded-circle'
+              = image_tag '/assets/user_dummy.png', size: "60x60", class: 'rounded-circle'
         h5.media-body.ml-2.mt-3
           = link_to user.name, user
         .float-right.mr-3.mb-0
