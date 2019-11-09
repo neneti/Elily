@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page])
     @microposts_cards = @user.microposts.recent_count(3)
+    @current_month_microposts = @user.microposts.current_month.count
+    @last_month_microposts = @user.microposts.last_month.count
   end
 
   def new

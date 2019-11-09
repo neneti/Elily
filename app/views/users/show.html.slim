@@ -3,13 +3,28 @@
     .col-md-2.text-center.pt-5
       = render partial: 'shared/user_info', locals: { user: @user }
     .col-md-8.pt-5
+      .row.justify-content-center.mb-2
+        .col-md-3
+          .text-center
+            p  先月の投稿数
+            p.count-font  = @last_month_microposts
+        .col-md-3
+          .text-center
+            - if @current_month_microposts <=  @last_month_microposts
+              = image_tag  '/assets/enpitsu.png', size: '80x80', class: "inversion"
+            - else
+              = image_tag  '/assets/enpitsu.png', size: '80x80'
+        .col-md-3
+          .text-center
+            p  今月の投稿数
+            p.count-font  = @current_month_microposts
       .container.mt-3
         = month_calendar events: @microposts do |date, microposts|
           = date.day
           - microposts.each do |micropost|
             p.m-auto.calendar-text
               = link_to micropost.title, micropost
-      p.text-right
+      p.text-right.mr-3
         = link_to 'もっと投稿を見る', posts_user_path, class: "ranking-font ml-3"
     .col-md-2.pt-3.pt-5
       .container.bg-white

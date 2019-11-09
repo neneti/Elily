@@ -5,16 +5,19 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap');
 
 body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   padding-top: 50px;
+  height: 100vh;
+  width: 100vw;
   a {
     color: #6c6c6c;
   }
 }
 
 .navbar-light .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-  border-color: #dfdfdf;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M6 6L 24 24M24 6L6 24'/%3E%3C/svg%3E");
 }
 
@@ -45,6 +48,18 @@ body {
 
 .ranking-font {
   font-size: 13px;
+}
+
+.count-font {
+  font-size: 30px;
+  font-weight:bold;
+  &:hover {
+    transform: scale(1.1, 1.1);
+  }
+}
+
+.inversion {
+  transform: scale(-1, 1);
 }
 
 .top-bg {
