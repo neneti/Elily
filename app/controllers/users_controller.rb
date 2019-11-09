@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 include SessionsHelper
 before_action :logged_in_user, only: [:index, :edit, :update, :destroy,:following, :followers]
 before_action :correct_user,   only: [:edit, :update]
-before_action :admin_user,     only: :destroy
 
   def index
     @q = User.ransack(params[:q])
@@ -55,7 +54,7 @@ before_action :admin_user,     only: :destroy
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "アカウントを削除しました。"
-    redirect_to users_url
+    redirect_to root_url
   end
 
   def following
@@ -88,10 +87,6 @@ before_action :admin_user,     only: :destroy
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
-  end
-
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
   end
 
 end

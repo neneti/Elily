@@ -1,17 +1,15 @@
 - provide(:title, 'Reset password')
 
-h1 パスワード再設定手続き
-
-= form_with model: @user, url: password_reset_path(params[:id]), local: true do |f|
-  == render 'shared/error_messages', object: f.object
-
-  = hidden_field_tag :email, @user.email
-
-  .form-group
-    = f.label :password, 'パスワード'
-    = f.password_field :password, class: 'form-control'
-  .form-group
-    = f.label :password_confirmation, 'パスワード（確認）'
-    = f.password_field :password_confirmation, class: 'form-control'
-
-  = f.submit '更新する', class: 'btn btn-primary'
+.col-md-8.mx-auto.pt-5
+  h3.pt-3.text-center
+    i.fas.fa-key.font-weight.border-warning.my-4  パスワード再設定
+  = form_with model: @user, url: password_reset_path(params[:id]), local: true do |f|
+    == render 'shared/error_messages', object: f.object
+    = hidden_field_tag :email, @user.email
+    .form-group
+      = f.label :password, 'パスワード'
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation, 'パスワード（確認）'
+      = f.password_field :password_confirmation, class: 'form-control'
+    = f.submit '更新する', class: 'btn btn-primary'
