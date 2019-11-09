@@ -1,8 +1,6 @@
-- provide(:title, 'log in')
-.container.py-5.px-md-5 style="width:450px"
-  h3.pt-3.text-center
+.col-md-8.mx-auto.py-5
+  h3.pt-2.text-center
     i.fas.fa-sign-in-alt.font-weight.border-warning.mb-3 ログイン
-
   .container.w-100.w-sm-25
     = form_with scope: :session, url: login_path, local: true do |f|
       .form-group

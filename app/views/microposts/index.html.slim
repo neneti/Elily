@@ -1,34 +1,33 @@
-.container.my-5.text-center
-  .col-md-8.mx-auto
-    - if @q.present?
-      h3.mb-5
-        i.fas.fa-images.font-weight.border-danger.ml-3 作品一覧
-      = search_form_for @q do |f|
-        .form-group.row
-          = f.label :title_cont, 'タイトル：', class: 'col-sm-2 col-form-label'
-          .col-sm-10
-            = f.search_field :title_cont, class: 'form-control'
-        .form-group.row
-          = f.label :created_at_gteq, '投稿日：', class: 'col-sm-2 col-form-label'
-          .col-sm-10
-            = f.search_field :created_at_gteq, class: 'form-control',
-                                        placeholder: '例：2019/10/10'
-        .form-group
-          = f.submit class: "btn btn-info mt-1 ml-2"
-    - else
-      .container.my-2
-        h3.pt-3
-          i.fas.fa-tags.font-weight.border-success.ml-3 タグ検索
-      h5.pt-3.mb-2
-        = form_tag :microposts, class: "mb-5" ,method: :get do
-          = label_tag :tag_name, "タグ:　"
-          = text_field_tag "tag_name"
-          = submit_tag "検索", class: "btn btn-info tag-btn"
-      .mb-2
-        .row.mx-auto
-          = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }
-  = render partial: 'shared/cards', locals: { microposts: @microposts }
-  .row.mt-5
-    .mx-auto
-      - if @microposts.present?
-        = paginate @microposts
+.col-md-8.mx-auto.text-center.pt-5
+  - if @q.present?
+    h3.mb-5
+      i.fas.fa-images.font-weight.border-danger.ml-3 作品一覧
+    = search_form_for @q do |f|
+      .form-group.row
+        = f.label :title_cont, 'タイトル：', class: 'col-sm-2 col-form-label'
+        .col-sm-10
+          = f.search_field :title_cont, class: 'form-control'
+      .form-group.row
+        = f.label :created_at_gteq, '投稿日：', class: 'col-sm-2 col-form-label'
+        .col-sm-10
+          = f.search_field :created_at_gteq, class: 'form-control',
+                                      placeholder: '例：2019/10/10'
+      .form-group
+        = f.submit class: "btn btn-info mt-1 ml-2"
+  - else
+    .container.my-2
+      h3.pt-3
+        i.fas.fa-tags.font-weight.border-success.mb-4.ml-3 タグ検索
+    h5.pt-3.mb-2
+      = form_tag :microposts, class: "mb-5" ,method: :get do
+        = label_tag :tag_name, "タグ:　"
+        = text_field_tag "tag_name"
+        = submit_tag "検索", class: "btn btn-info tag-btn"
+    .mb-2
+      .row.mx-auto
+        = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }
+= render partial: 'shared/cards', locals: { microposts: @microposts }
+.row.mt-5
+  .mx-auto
+    - if @microposts.present?
+      = paginate @microposts

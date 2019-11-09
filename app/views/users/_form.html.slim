@@ -1,29 +1,29 @@
 = form_with model: @user, local: true do |f|
-    = render 'shared/error_messages', object: f.object
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    = f.label :name, '名前'
+    = f.text_field :name, class: 'form-control'
+  - if local_assigns[:edit_flag].present?
     .form-group
-      = f.label :name, '名前'
-      = f.text_field :name, class: 'form-control'
-    - if local_assigns[:edit_flag].present?
-      .form-group
-        = f.label :profile,'プロフィール'
-        = f.text_area :profile,rows:5, class: 'form-control'
-      .form-group
-        = f.label :avatar, 'プロフィール画像'
-        = f.file_field :avatar, class: 'form-control'
+      = f.label :profile,'プロフィール'
+      = f.text_area :profile,rows:5, class: 'form-control'
     .form-group
-      = f.label :email, 'メールアドレス'
-      = f.text_field :email, class: 'form-control'
-    .form-group
-      = f.label :password, 'パスワード'
-      = f.password_field :password, class: 'form-control'
-    .form-group
-      = f.label :password_confirmation, 'パスワード（確認）'
-      = f.password_field :password_confirmation, class: 'form-control'
-    - if local_assigns[:edit_flag].present?
-      .form-group.text-center
-        = f.submit '更新', class: 'btn btn-info btn-block'
-    - else
-      .form-group.text-center
-        = f.submit '送信', class: 'btn btn-info btn-block' 
-    .text-center
-      = link_to '削除', @user, method: :delete, data: { confirm: "アカウントを削除します。よろしいですか？"}, class: 'btn btn-danger btn-block'
+      = f.label :avatar, 'プロフィール画像'
+      = f.file_field :avatar, class: 'form-control'
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control'
+  .form-group
+    = f.label :password, 'パスワード'
+    = f.password_field :password, class: 'form-control'
+  .form-group
+    = f.label :password_confirmation, 'パスワード（確認）'
+    = f.password_field :password_confirmation, class: 'form-control'
+  - if local_assigns[:edit_flag].present?
+    .form-group.text-center
+      = f.submit '更新', class: 'btn btn-info btn-block'
+  - else
+    .form-group.text-center
+      = f.submit '送信', class: 'btn btn-info btn-block'
+  .text-center
+    = link_to '削除', @user, method: :delete, data: { confirm: "アカウントを削除します。よろしいですか？"}, class: 'btn btn-danger btn-block'

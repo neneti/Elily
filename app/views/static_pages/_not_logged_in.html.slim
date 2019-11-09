@@ -14,17 +14,17 @@
 .container-fluid.mx-auto
   .container.mb-2.top-bg
     h4.pt-3
-      i.far.fa-images.font-weight.border-danger.mb-3.ml-3  新着作品
+      i.far.fa-images.font-weight.border-danger.mb-3.ml-3 新着作品
     .row.justify-content-center
       = render partial: 'shared/cards', locals: { microposts: @micropost_new }
   .container.mb-2.top-bg
     h4.pt-3
-      i.fas.fa-crown.font-weight.border-warning.mb-3.ml-3  人気ランキング（週間）
+      i.fas.fa-crown.font-weight.border-warning.mb-3.ml-3 人気ランキング（週間）
     .row.justify-content-center
       = render partial: 'shared/cards', locals: { microposts: @micropost_ranking }
   .container.mb-2.top-bg
     h4.pt-3
-      i.fas.fa-users.font-weight.border-primary.mb-3.ml-3   ピックアップユーザー
+      i.fas.fa-users.font-weight.border-primary.mb-3.ml-3 ピックアップユーザー
     .row.justify-content-center
       = render partial: 'shared/user_pickup', locals: { users: @users }
   .container.mb-2.top-bg

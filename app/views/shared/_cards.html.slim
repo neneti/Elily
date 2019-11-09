@@ -1,33 +1,32 @@
-
-  .row.justify-content-center
-    - microposts.each_with_index do |micropost, i|
-      div.mx-2.mb-3
-        - if local_assigns[:ranking_flag].present?
-          h4.mb-2
-            = i+1
-            = "位"
-        .card.my-2#card-image
-          .d-flex.flex-row.m-1
-            .user-image
-              = link_to user_path(micropost.user) do
-                - if micropost.user.avatar.attached?
-                  = image_tag micropost.user.avatar, class: 'rounded-circle'
-                - else
-                  = image_tag 'user_dummy.png', class: 'rounded-circle'
-            small.text-muted.ml-3.pt-1
-              = micropost.user.name
-          .micropost-image.p-1
+.row.justify-content-center
+  - microposts.each_with_index do |micropost, i|
+    div.mx-2.mb-3
+      - if local_assigns[:ranking_flag].present?
+        h4.mb-2
+          = i+1
+          = "位"
+      .card.my-2#card-image
+        .d-flex.flex-row.m-1
+          .user-image
+            = link_to user_path(micropost.user) do
+              - if micropost.user.avatar.attached?
+                = image_tag micropost.user.avatar, class: 'rounded-circle'
+              - else
+                = image_tag 'user_dummy.png', class: 'rounded-circle'
+          small.text-muted.ml-3.pt-1
+            = micropost.user.name
+        .micropost-image.p-1
+          = link_to micropost_path(micropost) do
+            = image_tag micropost.illusts, class: 'card-img-top rounded card-hover'
+        .card-body.text-right
+          p.card-text.text-center
             = link_to micropost_path(micropost) do
-              = image_tag micropost.illusts, class: 'card-img-top rounded card-hover'
-          .card-body.text-right
-            p.card-text.text-center.card-title-text
-              = link_to micropost_path(micropost) do
-                = micropost.title
-          .d-flex.mb-1
-            .ml-2
-              = render partial: 'shared/like_icon', locals: { micropost: micropost }
-            .ml-2
-              = render partial: 'shared/comment_icon', locals: { micropost: micropost }
-            .ml-auto.mb-2
-              small.text-muted
-                = Date.parse(micropost.start_time.to_s).strftime("%Y年%m月%d日")
+              = micropost.title
+        .d-flex.mb-1
+          .ml-2
+            = render partial: 'shared/like_icon', locals: { micropost: micropost }
+          .ml-2
+            = render partial: 'shared/comment_icon', locals: { micropost: micropost }
+          .ml-auto.mb-2
+            small.text-muted
+              = Date.parse(micropost.start_time.to_s).strftime("%Y年%m月%d日")

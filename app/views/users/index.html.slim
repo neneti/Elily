@@ -1,6 +1,6 @@
 .col-md-8.mx-auto.pt-5
   h3.pt-3.text-center
-    i.fas.fa-users.font-weight.border-primary.ml-3   ユーザー検索
+    i.fas.fa-users.font-weight.border-primary.ml-3  ユーザー検索
   = search_form_for @q, class: 'mb-3' do |f|
     .d-flex.mt-5
       = f.search_field :name_cont, class: 'form-control',

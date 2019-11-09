@@ -25,22 +25,22 @@ header
                 i.fas.fa-file-upload.pt-3.mx-2.header-icon.nav-link
             li.nav-item
               = link_to  notifications_path do
-                  - if unchecked_notifications.any?
-                    span.fa-stack
-                      i.far.fa-bell.fa-stack-2x.pt-3.mx-2.header-icon.nav-link
-                      i.fas.fa-circle.n-circle.fa-stack-1x.pt-3.mx-2.header-icon.nav-link
-                  - else
-                    i.far.fa-bell.pt-3.mx-2.header-icon.nav-link
-              li.nav-item.dropdown
-                a.nav-link.dropdown-toggle#navbarDropdown role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
-                  - if current_user.avatar.attached?
-                    = image_tag current_user.avatar, size: "30x30", class: 'rounded-circle'
-                  - else
-                    = image_tag '/assets/user_dummy.png', size: "30x30", class: 'rounded-circle'
-                .dropdown-menu.dropdown-menu-right aria-labelledby='navbarDropdown'
-                  = link_to 'マイページ', current_user, class: 'dropdown-item'
-                  = link_to '設定', edit_user_path(current_user), class: 'dropdown-item'
-                  = link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item'
+                - if unchecked_notifications.any?
+                  span.fa-stack
+                    i.far.fa-bell.fa-stack-2x.pt-3.mx-2.header-icon.nav-link
+                    i.fas.fa-circle.n-circle.fa-stack-1x.pt-3.mx-2.header-icon.nav-link
+                - else
+                  i.far.fa-bell.pt-3.mx-2.header-icon.nav-link
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle#navbarDropdown role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'
+                - if current_user.avatar.attached?
+                  = image_tag current_user.avatar, size: "30x30", class: 'rounded-circle'
+                - else
+                  = image_tag '/assets/user_dummy.png', size: "30x30", class: 'rounded-circle'
+              .dropdown-menu.dropdown-menu-right aria-labelledby='navbarDropdown'
+                = link_to 'マイページ', current_user, class: 'dropdown-item'
+                = link_to '設定', edit_user_path(current_user), class: 'dropdown-item'
+                = link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item'
           - else
             li.nav-item
               = link_to 'サイト説明', explanation_path, class: 'nav-link'

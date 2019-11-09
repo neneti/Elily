@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+include ActionDispatch::TestProcess
 FactoryBot.define do
   factory :micropost do
     id { 1 }
