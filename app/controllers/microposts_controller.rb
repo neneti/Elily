@@ -1,17 +1,17 @@
+# frozen_string_literal: true
+
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: %i[create edit update destroy]
+  before_action :correct_user,   only: %i[edit update destroy]
 
   def index
     if params[:tag_name]
-      @microposts = Micropost.tagged_with("#{params[:tag_name]}").recent.page(params[:page])
+      @microposts = Micropost.tagged_with(params[:tag_name].to_s).recent.page(params[:page])
       @tag = ActsAsTaggableOn::Tag.most_used(10)
     else
       @q = Micropost.ransack(params[:q])
       @microposts = @q.result(distinct: true).recent.page(params[:page]).per(15)
-      if @microposts.empty?
-        flash.now[:warning] = '該当するイラストが見つかりませんでした。'
-      end
+      flash.now[:warning] = '該当するイラストが見つかりませんでした。' if @microposts.empty?
     end
   end
 
@@ -29,7 +29,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = "投稿が完了しました。"
+      flash[:success] = '投稿が完了しました。'
       redirect_to @micropost
     else
       @feed_items = []
@@ -52,7 +52,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "投稿を削除しました。"
+    flash[:success] = '投稿を削除しました。'
     redirect_to root_url
   end
 
@@ -66,12 +66,12 @@ class MicropostsController < ApplicationController
     @microposts_month_ranking = Micropost.main_month_ranks
   end
 
-private
+  private
 
   def micropost_params
     params.require(:micropost).permit(:content, :start_time,
-                                      :created_at_gteq,:title,
-                                      :illusts,:tag_list,:title_cont)
+                                      :created_at_gteq, :title,
+                                      :illusts, :tag_list, :title_cont)
   end
 
   def correct_user

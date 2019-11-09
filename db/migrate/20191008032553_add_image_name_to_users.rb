@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddImageNameToUsers < ActiveRecord::Migration[5.2]
   def change
-    add_column :users,:image_name,:string
+    add_column :users, :image_name, :string
   end
 end

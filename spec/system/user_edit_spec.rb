@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'ユーザ情報変更機能', type: :system do
@@ -32,7 +34,6 @@ describe 'ユーザ情報変更機能', type: :system do
         expect(page).to have_content 'プロフィールを更新しました。'
       end
     end
-
   end
 
   describe '不正な情報' do

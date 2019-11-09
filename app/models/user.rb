@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
   has_secure_password
-
 
   before_create :create_activation_digest
   before_save   :downcase_email
@@ -11,12 +12,12 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                  foreign_key: "followed_id",
-                                  dependent:   :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -24,7 +25,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :profile, length: { maximum: 150 }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
@@ -32,14 +33,13 @@ class User < ApplicationRecord
   paginates_per 8
   scope :recent, -> { order(updated_at: :desc) }
 
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
-      SecureRandom.urlsafe_base64
+  def self.new_token
+    SecureRandom.urlsafe_base64
   end
 
   def remember
@@ -50,6 +50,7 @@ class User < ApplicationRecord
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
+
     BCrypt::Password.new(digest).is_password?(token)
   end
 
@@ -83,7 +84,7 @@ class User < ApplicationRecord
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids}) ", user_id: self.id)
+    Micropost.where("user_id IN (#{following_ids}) ", user_id: id)
   end
 
   def follow(other_user)
@@ -101,11 +102,11 @@ class User < ApplicationRecord
   def self.user_pickup
     from  = 1.week.ago.beginning_of_day
     to    = Time.zone.now.end_of_day
-    self.find(Like.where(created_at: from...to).group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
+    find(Like.where(created_at: from...to).group(:user_id).order('count(user_id) desc').limit(10).pluck(:user_id))
   end
 
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and action = ? ', current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -125,5 +126,4 @@ class User < ApplicationRecord
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
-
 end

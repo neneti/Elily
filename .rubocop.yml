@@ -1,0 +1,48 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - bin/*
+    - db/**/*
+    - config/**/*
+    - Gemfile
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/GuardClause:
+  Exclude:
+    - app/models/micropost.rb
+  MinBodyLength: 6
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/PerceivedComplexity:
+  Max: 8
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - Gemfile
+    - spec/**/*
+    - lib/tasks/**/*
+  Max: 30
+
+Metrics/ClassLength:
+  Max: 120

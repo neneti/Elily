@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Micropost < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -5,7 +7,7 @@ class Micropost < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   belongs_to :user
   has_one_attached :illusts
-  scope :recent_count, -> (count) { order(created_at: :desc).limit(count) }
+  scope :recent_count, ->(count) { order(created_at: :desc).limit(count) }
   scope :recent, -> { order(id: :desc) }
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 20 }
@@ -28,23 +30,23 @@ class Micropost < ApplicationRecord
   def self.week_ranks
     from  = 1.week.ago.beginning_of_day
     to    = Time.zone.now.end_of_day
-    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(5).pluck(:micropost_id))
+    find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(5).pluck(:micropost_id))
   end
 
   def self.main_week_ranks
     from  = 1.week.ago.beginning_of_day
     to    = Time.zone.now.end_of_day
-    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(20).pluck(:micropost_id))
+    find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(20).pluck(:micropost_id))
   end
 
   def self.main_month_ranks
     from  = 1.month.ago.beginning_of_day
     to    = Time.zone.now.end_of_day
-    self.find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(20).pluck(:micropost_id))
+    find(Like.where(created_at: from...to).group(:micropost_id).order('count(micropost_id) desc').limit(20).pluck(:micropost_id))
   end
 
   def create_notification_like!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and micropost_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and micropost_id = ? and action = ? ', current_user.id, user_id, id, 'like'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         micropost_id: id,
@@ -63,7 +65,9 @@ class Micropost < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+    if temp_ids.blank?
+      save_notification_comment!(current_user, comment_id, user_id)
+    end
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
@@ -81,13 +85,13 @@ class Micropost < ApplicationRecord
 
   private
 
-   def illusts_size
-     if illusts.attached?
-       if illusts.blob.byte_size > 1.megabytes
-         errors.add(:illusts, "1MB以下にしてください。")
-       end
-     else
-       errors.add(:illusts, 'ファイルを添付してください')
-     end
-   end
+  def illusts_size
+    if illusts.attached?
+      if illusts.blob.byte_size > 1.megabytes
+        errors.add(:illusts, '1MB以下にしてください。')
+      end
+    else
+      errors.add(:illusts, 'ファイルを添付してください')
+    end
+  end
 end

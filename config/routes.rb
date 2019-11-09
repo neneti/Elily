@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'likes/create'
   get 'likes/destroy'
@@ -20,11 +22,11 @@ Rails.application.routes.draw do
     collection do
       get :ranking, :following
     end
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: %i[create destroy]
   end
   resources :notifications, only: :index
-  resources :likes, only: [:create, :destroy]
+  resources :likes, only: %i[create destroy]
   resources :account_activations, only: [:edit]
-  resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :relationships,       only: [:create, :destroy]
+  resources :password_resets,     only: %i[new create edit update]
+  resources :relationships,       only: %i[create destroy]
 end

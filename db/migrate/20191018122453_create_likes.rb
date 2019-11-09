@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLikes < ActiveRecord::Migration[5.1]
   def change
     create_table :likes do |t|
@@ -8,7 +10,7 @@ class CreateLikes < ActiveRecord::Migration[5.1]
 
       t.index :user_id
       t.index :micropost_id
-      t.index [:user_id, :micropost_id], unique: true
+      t.index %i[user_id micropost_id], unique: true
     end
   end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-process resize_to_limit: [400, 400]
+  process resize_to_limit: [400, 400]
 
   storage :file
 
@@ -12,6 +14,6 @@ process resize_to_limit: [400, 400]
 
   # アップロード可能な拡張子のリスト
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

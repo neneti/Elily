@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :logged_in_user
 
@@ -12,7 +14,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:success] = "コメントできませんでした"
+      flash[:success] = 'コメントできませんでした'
       redirect_back(fallback_location: root_path)
     end
   end
@@ -32,5 +34,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :post_id, :user_id)
   end
-
 end

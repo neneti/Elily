@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'タグ検索', type: :system do
@@ -7,7 +9,7 @@ describe 'タグ検索', type: :system do
 
   before do
     sign_in_as user
-    visit microposts_path(tag_name: "#")
+    visit microposts_path(tag_name: '#')
   end
 
   describe '検索成功' do
@@ -25,7 +27,7 @@ describe 'タグ検索', type: :system do
       it '投稿が表示されないこと' do
         fill_in 'tag_name', with: 'ああああああ'
         click_on '検索'
-        expect(page).not_to have_content micropost.title
+        expect(page).not_to have_content other_micropost.title
       end
     end
   end

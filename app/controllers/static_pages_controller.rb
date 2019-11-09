@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StaticPagesController < ApplicationController
   def home
     @micropost_new = Micropost.recent_count(5)

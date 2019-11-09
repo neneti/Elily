@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe '未ログイン時におけるイラストカードの機能制限', type: :system do
