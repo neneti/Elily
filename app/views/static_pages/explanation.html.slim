@@ -1,4 +1,32 @@
 .container.pt-5
-  .text-center
-    h2  Elilyとは…
-    p イラスト投稿を継続させるためのサービスです！
+  .d-flex.justify-content-center.align-items-end
+    = image_tag  '/assets/header.png', class:"explanation_img"
+    h3 とは…
+  h4.text-center.pt-2.my-5 イラスト制作のモチベーションを継続させるためのサービスです！
+  .row.justify-content-start.pt-3.my-5
+    .col-md-3.mx-auto
+      h3.font-weight.border-danger.text-center カレンダー機能
+      p.pt-3 イラストを投稿するとカレンダーに記録されます。
+      p.pt-1 先月より投稿数が多いとイラストの向きが変わります。
+    .col-md-3.mx-auto
+      h3.font-weight.border-primary.text-center ランキング機能
+      p.pt-3 いいねの数が多いとランキングに表示されます。
+      p.pt-1 週間TOP5に入るとトップページにも表示されます。
+    .col-md-3.mx-auto
+      h3.font-weight.border-success.text-center タグ機能
+      p.pt-3 投稿作品にはタグを付けることができます。
+      p.pt-1 タグをクリックすれば簡単にタグ一覧へ移動できます。
+  .row.justify-content-start.mb-5.pt-3
+    .col-md-3.mx-auto
+      h3.font-weight.border-info.text-center 通知機能
+      p.pt-3 コメント、フォロー、いいねがくると通知が届きます。
+    .col-md-3.mx-auto
+      h3.font-weight.border-secondary.text-center フォロー機能
+      p.pt-3 気になったユーザーをフォローできます。
+    .col-md-3.mx-auto
+      h3.font-weight.border-warning.text-center 検索機能
+      p.pt-3 ユーザー、作品、タグを検索できます。
+  .d-flex.justify-content-center.align-items-end
+    h5 登録はこちらから！→
+    = link_to signup_path do
+      = image_tag '/assets/enpitsu.png', size: '50x50'
