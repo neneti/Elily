@@ -1,25 +1,81 @@
-# README
+# Elily
+***
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+***
 
-Things you may want to cover:
+Elily（URL: https://elily.herokuapp.com）はイラスト制作のモチベーションを維持できない人を対象にしたアプリです。既存のイラスト投稿サイトとの違いは、イラストの投稿頻度を一目で確認することができることです。他のユーザーから丸見えになることで、イラストを描かざるをえない状況にすることを目的としています。
 
-* Ruby version
+<img width="1423" alt="readme-img" src="https://user-images.githubusercontent.com/51582028/68539776-b51c5a00-03cb-11ea-909f-43170f24f844.png">
+（先月より今月の投稿数が多いと画像は右を向きます）
 
-* System dependencies
+その他にも、モチベーションを維持するための機能をいくつか実装しております。
 
-* Configuration
+## 機能一覧
+***
 
-* Database creation
+- ユーザー管理機能
+  - 新規ユーザー登録
+  - ログイン（簡単ログイン機能を含む）
+  - プロフィール編集
+  - プロフィール参照
+  - ユーザー一覧表示
+  - ユーザー検索
+- イラスト管理機能
+  - 新規イラスト投稿
+  - イラスト編集・削除
+  - イラスト詳細表示
+  - イラスト一覧表示
+  - イラスト検索
+- カレンダー機能
+  - カレンダーとイラストの紐付け
+- 通知機能
+  - フォロー、いいね、コメントの通知
+- ランキング機能
+  - 週間、月間のいいね数によるランキング
+- タグ管理機能
+  - タグとイラストの紐付け
+  - クリックしたタグ一覧の表示
+  - タグ検索
+- フォロー機能
+  - フォロー登録・解除（Ajax）
+  - フォロー、フォロワーの一覧表示
+- いいね機能
+  - いいね登録・解除（Ajax）
+- コメント機能
+  - 各記事へのコメント登録・削除（Ajax）
 
-* Database initialization
+## 使用技術一覧
+***
 
-* How to run the test suite
+- 言語
+  - Ruby（2.6.3）
+- フレームワーク
+  - Ruby on Rails（5.2.3）
+- RDS
+  - MySQL（5.7）
+- フロントエンド
+  - Slim
+  - Bootstrap4
+  - Font Awesome
+  - Scss
+  - jQuery
+- 開発環境
+  - Docker for Mac
+  - Atom
+- 本番環境
+  - heroku
+- 使用した主なgem
+  - acts-as-taggable-on（タグ機能）
+  - aws-sdk-s3（S3のストレージ使用）
+  - kaminari（ページネーション）
+  - Ransack（検索機能）
+  - simple_calender（カレンダー機能）
+  - RSpec（単体・統合テスト）
+  - rubocop（リンター）
+  - Active Storage（画像アップロード）
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# neneti
+## 今後追加予定の機能
+***
+  - Omniauth
+  - AWS
