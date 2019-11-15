@@ -39,7 +39,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    if current_user == User.find_by(email: 'test-user@example.com')
+      flash[:info] = 'テストユーザーは設定を変更できません。'
+      redirect_back(fallback_location: root_path)
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def update
