@@ -2,11 +2,11 @@
   h3.mb-5
     i.fas.fa-crown.font-weight.border-warning 人気ランキング
   .row.justify-content-center
-    .col-md-5.ranking-border
+    .col-md-4.ranking-border
       h3.mb-5
         i.fas.fa-hotdog.font-weight.border-primary 週間〜TOP20〜
       = render partial: 'shared/cards', locals: { microposts: @microposts_week_ranking, ranking_flag: true }
-    .col-md-5
+    .col-md-4
       h3.mb-5
         i.fas.fa-hamburger.font-weight.border-info 月間〜TOP20〜
       = render partial: 'shared/cards', locals: { microposts: @microposts_month_ranking, ranking_flag: true}
