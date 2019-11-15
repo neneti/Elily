@@ -26,8 +26,9 @@
     .mb-2
       .row.mx-auto
         = render partial: 'shared/tag_ranking', locals: { tag_list: @tag }
-= render partial: 'shared/cards', locals: { microposts: @microposts }
-.row.mt-5
-  .mx-auto
-    - if @microposts.present?
-      = paginate @microposts
+
+  = render partial: 'shared/cards', locals: { microposts: @microposts }
+  .row.mt-5
+    .mx-auto
+      - if @microposts.present?
+        = paginate @microposts
