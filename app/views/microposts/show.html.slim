@@ -10,7 +10,7 @@
                       data: { confirm: "「#{@micropost.title}」の記事を削除します。よろしいですか？" },
                       class: 'float-right mr-2'
           = link_to '編集', edit_micropost_path(@micropost), class: 'mr-3 float-right'
-        = image_tag @micropost.illusts, class: 'py-3 w-100'
+        = image_tag @micropost.illusts, class: 'py-3 w-100 y-100'
         .text-right.my-2.pr-2
           = render partial: 'shared/like_form', locals: { micropost: @micropost }
         h3.my-3.pl-3
