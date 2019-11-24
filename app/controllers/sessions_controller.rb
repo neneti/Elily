@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
   end
 
   def test_user_login
-    @test_user = User.find_by(email: 'test-user@example.com')
+    @test_user = User.find_by(email: 'test-user1@example.com')
     log_in @test_user
     flash[:info] = 'テストユーザーとしてログインしました。'
     redirect_back_or @test_user
