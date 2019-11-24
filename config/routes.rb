@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/test-user-login', to: 'sessions#test_user_login', as: 'test_user_login'
   resources :users do
     member do
-      get :following, :followers, :posts
+      get :following, :followers, :posts, :liked
     end
   end
   resources :microposts do

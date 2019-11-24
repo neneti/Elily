@@ -1,0 +1,14 @@
+.container-fluid
+  .row
+    .col-md-2.text-center.pt-5
+      = render partial: 'shared/user_info', locals: { user: @user }
+    .col-md-10.text-center
+      .container.my-5
+        .container.text-center
+          h3.mb-5
+            i.far.fa-heart.font-weight.border-danger.ml-3 いいね履歴
+        = render partial: 'shared/cards', locals: { microposts: @microposts }
+        .row.mt-5
+          .mx-auto
+            - if @microposts.present?
+              = paginate @microposts

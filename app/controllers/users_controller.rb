@@ -82,6 +82,11 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.page(params[:page])
   end
 
+  def liked
+    @user = User.find(params[:id])
+    @microposts = @user.liked_microposts.page(params[:page])
+  end
+
   private
 
   def user_params
